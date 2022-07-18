@@ -6,5 +6,4 @@ async function getAllUsers(){
     } catch (err) {
         console.warn(err);
     }
-
 }
