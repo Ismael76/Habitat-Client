@@ -1,0 +1,134 @@
+.u-section-1 {
+    background-image: url("images/-min.jpg");
+    background-position: 50% 50%;
+  }
+  
+  .u-section-1 .u-sheet-1 {
+    min-height: 824px;
+  }
+  
+  .u-section-1 .u-shape-1 {
+    width: 461px;
+    height: 461px;
+    margin: 208px 183px 0 auto;
+  }
+  
+  .u-section-1 .u-text-1 {
+    font-family: "Archivo Black";
+    font-size: 7.5rem;
+    margin: -494px 301px 0 187px;
+  }
+  
+  .u-section-1 .u-text-2 {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    margin: 20px 489px 60px 187px;
+  }
+  
+  .u-section-1 .u-btn-1 {
+    border-style: none none solid;
+    padding: 0;
+  }
+  
+  @media (max-width: 1199px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 693px;
+    }
+  
+    .u-section-1 .u-shape-1 {
+      width: 420px;
+      height: 438px;
+      margin-top: 144px;
+      margin-right: 150px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      width: auto;
+      margin-top: -471px;
+      margin-right: 111px;
+      margin-left: 87px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      width: auto;
+      margin-top: 36px;
+      margin-right: 389px;
+      margin-left: 87px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+     .u-section-1 {
+      background-position: 50.21% 50%;
+    }
+  
+    .u-section-1 .u-sheet-1 {
+      min-height: 658px;
+    }
+  
+    .u-section-1 .u-shape-1 {
+      width: 370px;
+      height: 370px;
+      margin-top: 157px;
+      margin-right: 50px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      font-size: 6.25rem;
+      margin-top: -428px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 256px;
+      margin-bottom: 58px;
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 496px;
+    }
+  
+    .u-section-1 .u-shape-1 {
+      width: 334px;
+      height: 334px;
+      margin-top: 60px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      font-size: 5rem;
+      margin-top: -372px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 76px;
+      margin-bottom: 72px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 444px;
+    }
+  
+    .u-section-1 .u-shape-1 {
+      width: 234px;
+      height: 234px;
+      margin-right: 0;
+    }
+  
+    .u-section-1 .u-text-1 {
+      font-size: 3.75rem;
+      margin-top: -308px;
+      margin-right: 35px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 0;
+      margin-bottom: 38px;
+    }
+  }
