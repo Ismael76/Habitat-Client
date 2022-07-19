@@ -6,8 +6,6 @@ async function requestLogin(e) {
     password: e.target[1].value,
   };
 
-  console.log("IN LOGIN");
-
   e.preventDefault();
   try {
     const options = {
@@ -17,7 +15,6 @@ async function requestLogin(e) {
     };
     const r = await fetch(`http://localhost:4000/users/login`, options);
     const data = await r.json();
-    console.log(data);
     if (data.err) {
       throw Error(data.err);
     }
@@ -72,7 +69,10 @@ async function requestCreateHabit(e) {
 }
 
 function login(data) {
+  console.log(data.user);
+  console.log(data.email);
   localStorage.setItem("username", data.user);
+  localStorage.setItem("email", data.email);
   location.hash = "#habbits";
 }
 
@@ -82,6 +82,6 @@ function logout() {
 }
 
 function currentUser() {
-  const username = localStorage.getItem("username");
+  const username = localStorage.getItem("email");
   return username;
 }

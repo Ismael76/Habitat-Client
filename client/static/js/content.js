@@ -75,22 +75,55 @@ function renderRegisterForm() {
 }
 
 async function renderHabits() {
-  const feed = document.createElement("section");
-  feed.id = "habits";
-  const posts = await getAllPosts();
-  const renderPost = (postData) => {
-    const post = document.createElement("div");
-    post.className = "post";
-    const user = document.createElement("h3");
-    const body = document.createElement("p");
-    user.textContent = postData.username;
-    body.textContent = postData.body;
-    post.appendChild(user);
-    post.appendChild(body);
-    feed.appendChild(post);
+  const habitFeed = document.createElement("section");
+  habitFeed.id = "habits";
+  const habits = await getAllHabits();
+  const renderHabit = (habitData) => {
+    //All Elements That Make Up Our Habit Item Container
+    const firstMainDiv = document.createElement("div");
+    const secondOuterDiv = document.createElement("div");
+    const anchor = document.createElement("a");
+    const firstDivInAnchor = document.createElement("div");
+    const secondDivInAnchor = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const streakDiv = document.createElement("div");
+    const progressBarInfo = document.createElement("div");
+    const progressBarInfo2 = document.createElement("div");
+    const progressContainerDiv = document.createElement("div");
+    const progressBar = document.createElement("div");
+
+    //Bootstrap Classes Applied To The Habit Items
+    firstMainDiv.className = "row justify-content-center";
+    secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    anchor.className = "btn btn-light stretched-link";
+    firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
+    streakDiv.className = "p-2";
+    progressBarInfo.className = "p-2";
+    progressBarInfo2.className = "p-2";
+    progressContainerDiv.className = "progress";
+    progressBar.className =
+      "progress-bar progress-bar-striped progress-bar-animated";
+
+    //Data Passed Into
+    titleDiv.textContent = habitData.title;
+    progressBarInfo.textContent = habitData.frequency;
+
+    //Appending To Body
+    habitFeed.appendChild(firstMainDiv);
+    firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(anchor);
+    secondOuterDiv.appendChild(progressContainerDiv);
+    anchor.appendChild(firstDivInAnchor);
+    anchor.appendChild(secondDivInAnchor);
+    firstDivInAnchor.appendChild(titleDiv);
+    firstDivInAnchor.appendChild(streakDiv);
+    secondDivInAnchor.appendChild(progressBarInfo);
+    secondDivInAnchor.appendChild(progressBarInfo2);
   };
-  posts.forEach(renderPost);
-  main.appendChild(feed);
+  habits.forEach(renderHabit);
+  main.appendChild(habitFeed);
 }
 
 function renderCreateHabit() {
