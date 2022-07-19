@@ -69,9 +69,16 @@ async function requestCreateHabit(e) {
 }
 
 function login(data) {
-  localStorage.setItem("username", data.user);
-  localStorage.setItem("email", data.email);
-  location.hash = "#habits";
+  const payload = jwt_decode(data.token);
+
+  console.log("<----- data.toke in auth.js ------>");
+  console.log(plyload);
+  console.log("<----- data.toke in auth.js ------>");
+
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("username", payload.user);
+  localStorage.setItem("username", payload.email);
+  location.hash = "#habbits";
 }
 
 function logout() {
