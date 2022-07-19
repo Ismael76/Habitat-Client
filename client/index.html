@@ -3,12 +3,18 @@
 <html style="font-size: 16px;" lang="en">
 
 <head>
+
+    <meta charset="UTF-8" />
+    <title>Habitat</title>
+    <link rel="shortcut icon" href="./static/images/favicon.ico">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Create positive things">
     <meta name="description" content="">
     <title>Home </title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
+
 
     <link rel="stylesheet" href="./static/css/index.css" media="screen">
 
@@ -22,6 +28,9 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
+
+    <link rel="stylesheet" href="static/css/style.css">
+
     <script type="application/ld+json">{
                 "@context": "http://schema.org",
                 "@type": "Organization",
@@ -30,24 +39,31 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home ">
     <meta property="og:type" content="website">
+
 </head>
 
 <body>
-    <noscript>I love coffee, I love tea. No JavaScript? Get outta here!</noscript>
-
-    <nav></nav>
-
-    <main>
-        <form id="login">
-            <input type="submit" value="Login">
-        </form>
-
-        <form id="logout">
-            <input type="submit" value="Logout">
-        </form>
-
-        <button id="status">Check status</button>
-    </main>
+    <header class="heading">
+        <img class='logo' src="./static/images/plant.png">
+        <nav></nav>
+    </header>
+    <section class="home">
+        
+        <main>
+            <form id="login">
+                <img src="./static/images/plantvines.png" class="login-plants">
+                <input type="submit" value="Login">
+            </form>
+    
+            <form id="logout">
+                <input type="submit" value="Logout">
+            </form>
+    
+            <button id="status">Check status</button>
+        </main>
+    </section>
+    
+    
     <script src='static/js/url.js'></script>
     <script src='static/js/auth.js'></script>
     <script src='static/js/requests.js'></script>
