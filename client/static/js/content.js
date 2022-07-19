@@ -64,6 +64,24 @@ async function renderHabits() {
     main.appendChild(feed);
 }
 
+function renderCreateHabit() {
+    const fields = [
+        { tag: 'input', attributes: { type: 'text', name: 'name', placeholder: 'Name' } },
+        { tag: 'input', attributes: { type: 'text', name: 'frequency', placeholder: 'Frequency' } },
+        { tag: 'input', attributes: { type: 'submit', value: 'Create Account' } }
+    ]
+    const form = document.createElement('form');
+    fields.forEach(f => {
+        let field = document.createElement(f.tag);
+        Object.entries(f.attributes).forEach(([a, v]) => {
+            field.setAttribute(a, v);
+            form.appendChild(field);
+        })
+    })
+    form.addEventListener('submit', requestCreateHabit)
+    main.appendChild(form);
+}
+
 function renderProfile() {
     const profile = document.createElement('section');
     const greeting = document.createElement('h3');
