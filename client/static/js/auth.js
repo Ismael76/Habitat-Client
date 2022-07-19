@@ -6,6 +6,8 @@ async function requestLogin(e) {
     password: e.target[1].value,
   };
 
+  console.log("IN LOGIN");
+
   e.preventDefault();
   try {
     const options = {
@@ -13,8 +15,9 @@ async function requestLogin(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     };
-    const r = await fetch(`${SERVER_URL}/users/login`, options);
+    const r = await fetch(`http://localhost:4000/users/login`, options);
     const data = await r.json();
+    console.log(data);
     if (data.err) {
       throw Error(data.err);
     }
@@ -26,13 +29,19 @@ async function requestLogin(e) {
 
 async function requestRegistration(e) {
   e.preventDefault();
+  const registerData = {
+    username: e.target[3].value,
+    email: e.target[0].value,
+    password: e.target[1].value,
+  };
+
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+      body: JSON.stringify(registerData),
     };
-    const r = await fetch(`${SERVER_URL}/users/register`, options);
+    const r = await fetch(`http://localhost:4000/users/register`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -51,7 +60,7 @@ async function requestCreateHabit(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`${SERVER_URL}/users/`, options);
+    const r = await fetch(`https://habitat-app.herokuapp.com/users/`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
