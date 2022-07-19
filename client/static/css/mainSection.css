@@ -96,7 +96,7 @@
   width: 543px;
   height: 543px;
   object-position: 50% 23.76%;
-  background-image: url("../images/plant.jpg");
+  /* background-image: url("../images/plant.jpg"); */
   background-position: 50% 50%;
   margin: 0 auto;
 }
