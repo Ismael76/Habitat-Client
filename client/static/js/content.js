@@ -1,12 +1,5 @@
-// function renderHomepage(){
-//     const logo = document.createElement('img');
-//     logo.id = 'logo';
-//     logo.src = './images/plant.jpg';
-//     logo.alt = 'group logo'
-//     main.appendChild(logo);
-// }
-
 function renderLoginForm() {
+  main.className = "";
   const fields = [
     {
       tag: "input",
@@ -35,6 +28,7 @@ function renderLoginForm() {
 }
 
 function renderRegisterForm() {
+  main.className = "";
   const fields = [
     {
       tag: "input",
@@ -74,7 +68,36 @@ function renderRegisterForm() {
   main.appendChild(form);
 }
 
-async function renderHabits() {
+function renderHabitPage() {
+  //Renders 'Today' Box
+  const today = document.createElement("section");
+  const firstDiv = document.createElement("div");
+  const secondDiv = document.createElement("div");
+  const thirdDiv = document.createElement("div");
+  const fourthDiv = document.createElement("div");
+  const fifthDiv = document.createElement("div");
+  const title = document.createElement("p");
+
+  firstDiv.className = "container";
+  secondDiv.className = "row justify-content-center";
+  thirdDiv.className = "col-md-8 col-lg-6 mt-3";
+  fourthDiv.className = "card bg-light text-dark rounded ";
+  fifthDiv.className = "d-flex card-body justify-content-center";
+  title.className = "text-center h1 font-weight-bold";
+
+  title.textContent = "TODAY";
+
+  main.appendChild(today);
+  today.appendChild(firstDiv);
+  firstDiv.appendChild(secondDiv);
+  secondDiv.appendChild(thirdDiv);
+  thirdDiv.appendChild(fourthDiv);
+  fourthDiv.appendChild(fifthDiv);
+  fifthDiv.appendChild(title);
+}
+
+async function renderHabitItems() {
+  main.className = "reset-styles";
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
   const habits = await getAllHabits();
@@ -160,6 +183,6 @@ function renderProfile() {
 
 function render404() {
   const error = document.createElement("h2");
-  error.textContent = "Oops, we can't find that page sorry!";
+  error.textContent = "Oops, We Can't Find That Page Sorry!";
   main.appendChild(error);
 }

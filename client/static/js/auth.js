@@ -69,11 +69,9 @@ async function requestCreateHabit(e) {
 }
 
 function login(data) {
-  console.log(data.user);
-  console.log(data.email);
   localStorage.setItem("username", data.user);
   localStorage.setItem("email", data.email);
-  location.hash = "#habbits";
+  location.hash = "#habits";
 }
 
 function logout() {
