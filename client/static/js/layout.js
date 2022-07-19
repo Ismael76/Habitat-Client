@@ -34,6 +34,7 @@ function updateMain(path) {
         break;
       case "#habits":
         renderHabitPage();
+        renderHabitPageMenu();
         renderHabitItems();
         break;
       case "#createHabit":

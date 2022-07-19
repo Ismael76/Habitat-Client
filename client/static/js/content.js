@@ -71,18 +71,18 @@ function renderRegisterForm() {
 function renderHabitPage() {
   //Renders 'Today' Box
   const today = document.createElement("section");
+  // const firstDiv = document.createElement("div");
   const firstDiv = document.createElement("div");
   const secondDiv = document.createElement("div");
   const thirdDiv = document.createElement("div");
   const fourthDiv = document.createElement("div");
-  const fifthDiv = document.createElement("div");
   const title = document.createElement("p");
 
-  firstDiv.className = "container";
-  secondDiv.className = "row justify-content-center";
-  thirdDiv.className = "col-md-8 col-lg-6 mt-3";
-  fourthDiv.className = "card bg-light text-dark rounded ";
-  fifthDiv.className = "d-flex card-body justify-content-center";
+  // firstDiv.className = "container";
+  firstDiv.className = "row justify-content-center";
+  secondDiv.className = "col-md-8 col-lg-6 mt-3";
+  thirdDiv.className = "card bg-light text-dark rounded ";
+  fourthDiv.className = "d-flex card-body justify-content-center";
   title.className = "text-center h1 font-weight-bold";
 
   title.textContent = "TODAY";
@@ -92,8 +92,49 @@ function renderHabitPage() {
   firstDiv.appendChild(secondDiv);
   secondDiv.appendChild(thirdDiv);
   thirdDiv.appendChild(fourthDiv);
-  fourthDiv.appendChild(fifthDiv);
-  fifthDiv.appendChild(title);
+  fourthDiv.appendChild(title);
+  // fifthDiv.appendChild(title);
+}
+
+function renderHabitPageMenu() {
+  //Renders 'Menu Options' Box On Habits Page
+  main.className = "reset-styles";
+  const menu = document.createElement("section");
+  // const firstDiv = document.createElement("div");
+  const firstDiv = document.createElement("div");
+  const secondDiv = document.createElement("div");
+  const thirdDiv = document.createElement("div");
+  const fourthDiv = document.createElement("div");
+  const list = document.createElement("ul");
+  const listItemOne = document.createElement("li");
+  const listItemIconOne = document.createElement("i");
+  const listItemTwo = document.createElement("li");
+  const listItemIconTwo = document.createElement("i");
+
+  // firstDiv.className = "container";
+  firstDiv.className = "row justify-content-center";
+  secondDiv.className = "col-md-8 col-lg-6 mt-3";
+  thirdDiv.className = "card bg-light text-dark rounded ";
+  fourthDiv.className = "d-flex justify-content-center bg-color";
+  list.className = "menu";
+  listItemOne.className = "list-item";
+  listItemTwo.className = "list-item";
+  listItemIconOne.className = "fa-solid fa-pen menu-icon";
+  listItemIconTwo.className = "fa-solid fa-clock-rotate-left menu-icon";
+
+  listItemIconOne.textContent = "Add Habit";
+  listItemIconTwo.textContent = "History";
+
+  main.appendChild(menu);
+  menu.appendChild(firstDiv);
+  firstDiv.appendChild(secondDiv);
+  secondDiv.appendChild(thirdDiv);
+  thirdDiv.appendChild(fourthDiv);
+  fourthDiv.appendChild(list);
+  list.appendChild(listItemOne);
+  listItemOne.appendChild(listItemIconOne);
+  list.appendChild(listItemTwo);
+  listItemTwo.appendChild(listItemIconTwo);
 }
 
 async function renderHabitItems() {
@@ -116,6 +157,7 @@ async function renderHabitItems() {
     const progressBar = document.createElement("div");
 
     //Bootstrap Classes Applied To The Habit Items
+    habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
     anchor.className = "btn btn-light stretched-link";

@@ -69,16 +69,18 @@ async function requestCreateHabit(e) {
 }
 
 function login(data) {
-  const payload = jwt_decode(data.token);
+  // const payload = jwt_decode(data.token);
 
   console.log("<----- data.toke in auth.js ------>");
-  console.log(plyload);
+  // console.log(plyload);
   console.log("<----- data.toke in auth.js ------>");
 
-  localStorage.setItem("token", data.token);
-  localStorage.setItem("username", payload.user);
-  localStorage.setItem("username", payload.email);
-  location.hash = "#habbits";
+  // localStorage.setItem("token", data.token);
+  // localStorage.setItem("username", payload.user);
+  // localStorage.setItem("email", payload.email);
+  localStorage.setItem("username", data.user);
+  localStorage.setItem("email", data.email);
+  location.hash = "#habits";
 }
 
 function logout() {
