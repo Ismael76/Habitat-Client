@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Audiowide&family=Black+And+White+Picture&family=Black+Ops+One&family=Electrolize&family=Life+Savers&family=Nova+Round&family=Roboto&family=Rubik+Moonrocks&family=Short+Stack&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.heading {
+    height: 4.5rem;
+    background-color: #d34841;
+    padding: 0.5rem;
+}
+
+.logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: inline;
+    float: right;
+}
+
+nav {
+    display: inline-flex;
+    height: 100%;
+    width: calc(100% - 7rem);
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+
+nav > a {
+    margin: 0 5px;
+    color: #ffffff;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    /* font-family: 'Black Ops One', cursive; */
+    /* font-family: 'Life Savers', cursive; */
+    /* font-family: 'Nova Round', cursive; */
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: 'Rubik Moonrocks', cursive; */
+    font-family: 'Short Stack', cursive;
+}
+
+nav > a:hover {
+    background-color: #e07670;
+    transition: 0.5s;
+}
+
+.home {
+    height: calc(100vh - 4.5rem);
+    /* margin-top: 4.5rem; */
+}
+
+.logo-box {
+    display: inline-flex;
+}
+
+main {
+    width: 80%;
+    height: 100%;
+    background-color: #ffffff;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 25rem;
+    background-image: url("../images/cartoon\ plant.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+input {
+    width: 90%;
+    height: 2rem;
+    margin: 5px;
+    border: 1px solid #d34841;
+    border-radius: 5px;
+    padding: 0 3px;
+    background-color: rgba( 255, 255, 255, 0.8);
+}
+
+input[type=submit] {
+    background-color:#d34841;
+    border: 1px solid #d34841;
+    width: 60%;
+    color: white;
+}
+
+input[type=submit]:hover {
+    background-color: #ffffff;
+    color: #d34841;
+}
+
+.login-plants {
+    width: 100%;
+    height: 100%;
+}
