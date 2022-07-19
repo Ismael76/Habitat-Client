@@ -6,6 +6,8 @@
     box-sizing: border-box;
   }
 
+/* Styling the header */
+
 .heading {
     height: 4.5rem;
     background-color: #d34841;
@@ -49,24 +51,25 @@ nav > a:hover {
     transition: 0.5s;
 }
 
+/* styling the home section */
 .home {
     height: calc(100vh - 4.5rem);
     /* margin-top: 4.5rem; */
 }
 
-.logo-box {
-    display: inline-flex;
-}
-
 main {
     width: 80%;
     height: 100%;
-    background-color: #ffffff;
+    background-image: url('../images/background2.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
 }
 
+/* styling the form */
 form {
     display: flex;
     flex-direction: column;
@@ -109,3 +112,33 @@ input[type=submit]:hover {
     width: 100%;
     height: 100%;
 }
+
+/* styling background image */
+/* don't remove this for now */
+/* .main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container {
+    height: 30rem;
+    padding: 2rem 0 2rem 15rem;
+}
+
+.logo-box {
+    width: 55%;
+    height: 100%;
+}
+
+.logo-writing { 
+    color: #0D7C34;
+    font-size: 5rem;
+    font-family: 'Nova Round', cursive;
+}
+
+.info {
+    font-size: 1.5rem;
+    font-family: 'Short Stack', cursive;
+} */
