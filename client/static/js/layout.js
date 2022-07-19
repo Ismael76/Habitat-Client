@@ -32,6 +32,8 @@ function updateMain(path) {
                 renderRegisterForm(); break;
             case '#habits':
                 renderHabits(); break;
+            case '#createHabit':
+                renderCreateHabit(); break;
             case '#profile':
                 renderProfile(); break;
             default:
