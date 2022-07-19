@@ -180,11 +180,19 @@ main {
   padding: 0.5rem;
 }
 
+
+.logo-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: inline;
+    float: right;
+    background-color: #d34841;
+    border: none;
+}
+
 .logo {
-  width: 3.5rem;
-  height: 3.5rem;
-  display: inline;
-  float: right;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 
 .wobble {
@@ -196,19 +204,20 @@ main {
   animation: wobble 1s;
 }
 
-@keyframes wobble {
-  20% {
-    transform: translateX(-30px) rotate(-5deg);
-  }
-  30% {
-    transform: translateX(20px) rotate(5deg);
-  }
-  40% {
-    transform: translateX(-20px) rotate(-2deg);
-  }
-  50% {
-    transform: translateX(10px) rotate(2deg);
-  }
+  
+  @keyframes wobble {
+    20% {
+        transform: rotate(-15deg);
+    }
+    30% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-6deg);
+    }
+    50% {
+      transform: rotate(6deg);
+    }
 }
 
 nav {
@@ -237,8 +246,11 @@ nav > a {
 }
 
 nav > a:hover {
-  background-color: #e07670;
-  transition: 0.5s;
+    background-color: #e07670;
+    transition: 0.5s;
+    color: #ffffff;
+    text-decoration: none;
+
 }
 
 /* styling the home section */
@@ -248,6 +260,7 @@ nav > a:hover {
 }
 
 /* styling the form */
+/* change this so that it targets this specific form by class */
 form {
   display: flex;
   flex-direction: column;
@@ -321,6 +334,29 @@ input[type="submit"]:hover {
     font-family: 'Short Stack', cursive;
 } */
 
+
+/* styling the modal */
+
+#habit-form {
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+}
+
+label[for="frequency"] {
+    margin: 0.8rem 0 0 0.5rem;
+ }
+
 /* Habit Cards */
 
 .habit-card-items {
@@ -383,3 +419,4 @@ input[type="submit"]:hover {
 .bg-color {
   background-color: rgb(156, 239, 4) !important;
 }
+
