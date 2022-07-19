@@ -1,12 +1,5 @@
-// function renderHomepage(){
-//     const logo = document.createElement('img');
-//     logo.id = 'logo';
-//     logo.src = './images/plant.jpg';
-//     logo.alt = 'group logo'
-//     main.appendChild(logo);
-// }
-
 function renderLoginForm() {
+  main.className = "";
   const fields = [
     {
       tag: "input",
@@ -35,6 +28,7 @@ function renderLoginForm() {
 }
 
 function renderRegisterForm() {
+  main.className = "";
   const fields = [
     {
       tag: "input",
@@ -74,23 +68,127 @@ function renderRegisterForm() {
   main.appendChild(form);
 }
 
-async function renderHabits() {
-  const feed = document.createElement("section");
-  feed.id = "habits";
-  const posts = await getAllPosts();
-  const renderPost = (postData) => {
-    const post = document.createElement("div");
-    post.className = "post";
-    const user = document.createElement("h3");
-    const body = document.createElement("p");
-    user.textContent = postData.username;
-    body.textContent = postData.body;
-    post.appendChild(user);
-    post.appendChild(body);
-    feed.appendChild(post);
+function renderHabitPage() {
+  //Renders 'Today' Box
+  const today = document.createElement("section");
+  // const firstDiv = document.createElement("div");
+  const firstDiv = document.createElement("div");
+  const secondDiv = document.createElement("div");
+  const thirdDiv = document.createElement("div");
+  const fourthDiv = document.createElement("div");
+  const title = document.createElement("p");
+
+  // firstDiv.className = "container";
+  firstDiv.className = "row justify-content-center";
+  secondDiv.className = "col-md-8 col-lg-6 mt-3";
+  thirdDiv.className = "card bg-light text-dark rounded ";
+  fourthDiv.className = "d-flex card-body justify-content-center";
+  title.className = "text-center h1 font-weight-bold";
+
+  title.textContent = "TODAY";
+
+  main.appendChild(today);
+  today.appendChild(firstDiv);
+  firstDiv.appendChild(secondDiv);
+  secondDiv.appendChild(thirdDiv);
+  thirdDiv.appendChild(fourthDiv);
+  fourthDiv.appendChild(title);
+  // fifthDiv.appendChild(title);
+}
+
+function renderHabitPageMenu() {
+  //Renders 'Menu Options' Box On Habits Page
+  main.className = "reset-styles";
+  const menu = document.createElement("section");
+  // const firstDiv = document.createElement("div");
+  const firstDiv = document.createElement("div");
+  const secondDiv = document.createElement("div");
+  const thirdDiv = document.createElement("div");
+  const fourthDiv = document.createElement("div");
+  const list = document.createElement("ul");
+  const listItemOne = document.createElement("li");
+  const listItemIconOne = document.createElement("i");
+  const listItemTwo = document.createElement("li");
+  const listItemIconTwo = document.createElement("i");
+
+  // firstDiv.className = "container";
+  firstDiv.className = "row justify-content-center";
+  secondDiv.className = "col-md-8 col-lg-6 mt-3";
+  thirdDiv.className = "card bg-light text-dark rounded ";
+  fourthDiv.className = "d-flex justify-content-center bg-color";
+  list.className = "menu";
+  listItemOne.className = "list-item";
+  listItemTwo.className = "list-item";
+  listItemIconOne.className = "fa-solid fa-pen menu-icon";
+  listItemIconTwo.className = "fa-solid fa-clock-rotate-left menu-icon";
+
+  listItemIconOne.textContent = "Add Habit";
+  listItemIconTwo.textContent = "History";
+
+  main.appendChild(menu);
+  menu.appendChild(firstDiv);
+  firstDiv.appendChild(secondDiv);
+  secondDiv.appendChild(thirdDiv);
+  thirdDiv.appendChild(fourthDiv);
+  fourthDiv.appendChild(list);
+  list.appendChild(listItemOne);
+  listItemOne.appendChild(listItemIconOne);
+  list.appendChild(listItemTwo);
+  listItemTwo.appendChild(listItemIconTwo);
+}
+
+async function renderHabitItems() {
+  main.className = "reset-styles";
+  const habitFeed = document.createElement("section");
+  habitFeed.id = "habits";
+  const habits = await getAllHabits();
+  const renderHabit = (habitData) => {
+    //All Elements That Make Up Our Habit Item Container
+    const firstMainDiv = document.createElement("div");
+    const secondOuterDiv = document.createElement("div");
+    const anchor = document.createElement("a");
+    const firstDivInAnchor = document.createElement("div");
+    const secondDivInAnchor = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const streakDiv = document.createElement("div");
+    const progressBarInfo = document.createElement("div");
+    const progressBarInfo2 = document.createElement("div");
+    const progressContainerDiv = document.createElement("div");
+    const progressBar = document.createElement("div");
+
+    //Bootstrap Classes Applied To The Habit Items
+    habitFeed.className = "habit-card-items";
+    firstMainDiv.className = "row justify-content-center";
+    secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    anchor.className = "btn btn-light stretched-link";
+    firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
+    streakDiv.className = "p-2";
+    progressBarInfo.className = "p-2";
+    progressBarInfo2.className = "p-2";
+    progressContainerDiv.className = "progress";
+    progressBar.className =
+      "progress-bar progress-bar-striped progress-bar-animated";
+
+    //Data Passed Into
+    titleDiv.textContent = habitData.title;
+    progressBarInfo.textContent = habitData.frequency;
+
+    //Appending To Body
+    habitFeed.appendChild(firstMainDiv);
+    firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(anchor);
+    secondOuterDiv.appendChild(progressContainerDiv);
+    anchor.appendChild(firstDivInAnchor);
+    anchor.appendChild(secondDivInAnchor);
+    firstDivInAnchor.appendChild(titleDiv);
+    firstDivInAnchor.appendChild(streakDiv);
+    secondDivInAnchor.appendChild(progressBarInfo);
+    secondDivInAnchor.appendChild(progressBarInfo2);
   };
-  posts.forEach(renderPost);
-  main.appendChild(feed);
+  habits.forEach(renderHabit);
+  main.appendChild(habitFeed);
 }
 
 function renderCreateHabit() {
@@ -127,6 +225,6 @@ function renderProfile() {
 
 function render404() {
   const error = document.createElement("h2");
-  error.textContent = "Oops, we can't find that page sorry!";
+  error.textContent = "Oops, We Can't Find That Page Sorry!";
   main.appendChild(error);
 }
