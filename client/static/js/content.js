@@ -216,12 +216,12 @@ function setCompletedStatus() {
     }),
     headers: {
       "Content-type": "application/json",
-    }
+    },
   })
-  .then((r) => r.json())
-  .catch((err) => {
-    console.log("Oh No!");
-  });
+    .then((r) => r.json())
+    .catch((err) => {
+      console.log("Oh No!");
+    });
 
   // if (check === data[i].PostID) {
   //   fetch(`https://rum-wepost.herokuapp.com/emoji1/${data[i].PostID}`, {
@@ -247,8 +247,6 @@ function habitProgressBar(
   progressBar,
   streakDiv
 ) {
-  let checks = 0;
-
   if (habitData.progression == habitData.frequency) {
     progressBar.className = "progress-bar bg-success";
   }
@@ -269,19 +267,19 @@ function habitProgressBar(
     //SUBSEQUENT INCREMENT IS NOW EQUAL TO PROGRESSION VALUE IN DATABASE MULTIPLIED BY INITIAL INCREMENT
     subsequentIncrement = returnedData.progression * initialIncrement;
 
-    if (checks !== habitData.frequency) {
-      checks++;
+    if (habitData.progression !== habitData.frequency) {
+      habitData.progression++;
     }
 
     if (subsequentIncrement == 100) {
       progressBar.className = "progress-bar bg-success";
-      setcompletedstatus()
-      console.log("Progress bar is full");
+      // setcompletedstatus();
+      progressBar.setAttribute("style", `width: 100%`);
     }
 
     progressBar.setAttribute("style", `width: ${subsequentIncrement}%`);
     progressBarInfo.textContent =
-      "Today: " + checks + "/" + habitData.frequency;
+      "Today: " + habitData.progression + "/" + habitData.frequency;
   });
 }
 
