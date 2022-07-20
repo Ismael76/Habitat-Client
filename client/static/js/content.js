@@ -131,6 +131,11 @@ function renderHabitPageMenu() {
   listItemOne.setAttribute("data-target", "#exampleModalCenter");
   listItemIconTwo.textContent = "Completed";
 
+  listItemTwo.addEventListener("click", () => {
+    console.log("clicked!");
+    createNavLink(listItemIconTwo.textContent);
+  });
+
   main.appendChild(menu);
   menu.appendChild(firstDiv);
   firstDiv.appendChild(secondDiv);
@@ -144,7 +149,6 @@ function renderHabitPageMenu() {
 }
 
 async function renderHabitItems() {
-  console.log("IN HERE");
   main.className = "reset-styles";
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
@@ -206,6 +210,15 @@ async function renderHabitItems() {
   };
   habits.forEach(renderHabit);
   main.appendChild(habitFeed);
+}
+
+async function renderProfileImage() {
+  let returnedImageData = await getProfileImages();
+  let profileImg = document.createElement("img");
+
+  profileImg.setAttribute("src", returnedImageData[0].src);
+
+  main.appendChild(profileImg);
 }
 
 function setCompletedStatus() {
@@ -283,7 +296,10 @@ function habitProgressBar(
   });
 }
 
+function renderCompleted() {}
+
 function renderProfile() {
+  renderProfileImage();
   const profile = document.createElement("section");
   const greeting = document.createElement("h3");
   greeting.textContent = `Hi there, ${localStorage.getItem("username")}!`;

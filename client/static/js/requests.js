@@ -46,7 +46,6 @@ async function getUserSpecificHabits() {
 
 async function patchProgress(habitId) {
   let id = localStorage.getItem("id");
-
   try {
     const options = {
       method: "PATCH",
@@ -85,6 +84,22 @@ async function createNewHabit() {
     if (data.err) {
       throw Error(data.err);
     }
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+async function getProfileImages() {
+  try {
+    const options = {
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+    const response = await fetch(
+      `http://localhost:4000/user/profileImage`,
+      options
+    );
+    const data = await response.json();
+    return data;
   } catch (err) {
     console.warn(err);
   }
