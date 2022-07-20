@@ -122,4 +122,14 @@ async function getProfileImages() {
   }
 }
 
+async function deleteHabit(habitId) {
+  let id = localStorage.getItem("id");
+  try {
+    const options = { method: "DELETE" };
+    await fetch(`http://localhost:4000/user/habits/${id}/${habitId}`, options);
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
 module.exports = { getAllUsers, getUserHabits, createNewHabit };

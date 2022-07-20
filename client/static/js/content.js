@@ -161,6 +161,8 @@ async function renderHabitItems() {
     //All Elements That Make Up Our Habit Item Container
     const firstMainDiv = document.createElement("div");
     const secondOuterDiv = document.createElement("div");
+    const deleteAnchor = document.createElement("a");
+    const deleteIcon = document.createElement("i");
     const anchor = document.createElement("a");
     const firstDivInAnchor = document.createElement("div");
     const secondDivInAnchor = document.createElement("div");
@@ -175,6 +177,8 @@ async function renderHabitItems() {
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    deleteAnchor.className = "delete-btn";
+    deleteIcon.className = "fa-solid fa-trash-can fa-lg delete-icon";
     anchor.className = `btn btn-light stretched-link`;
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
@@ -194,12 +198,20 @@ async function renderHabitItems() {
       progressBar,
       streakDiv
     );
+
     //Data Passed Into
     titleDiv.textContent = habitData.title;
+
+    deleteAnchor.addEventListener("click", async () => {
+      await deleteHabit(habitData.id);
+      window.location.reload();
+    });
 
     //Appending To Body
     habitFeed.appendChild(firstMainDiv);
     firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(deleteAnchor);
+    deleteAnchor.appendChild(deleteIcon);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
     progressContainerDiv.appendChild(progressBar);

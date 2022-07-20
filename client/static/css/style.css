@@ -415,3 +415,22 @@ label[for="frequency"] {
 .bg-color {
   background-color: rgb(156, 239, 4) !important;
 }
+
+/* Delete Icon For Habits */
+
+.delete-icon {
+  text-align: center;
+}
+
+.delete-btn {
+  width: fit-content;
+  padding: 0.5rem;
+  transition: all 0.5s;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.delete-btn:hover {
+  background-color: rgba(177, 167, 167, 0.438);
+}
