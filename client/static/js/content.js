@@ -166,7 +166,7 @@ async function renderHabitItems() {
     const progressBar = document.createElement("div");
 
     // -----------------------     delete Habit     --------------------------- //
-    const deleteHabit = document.createElement("div");
+    const deleteHabit = document.createElement("button");
     // -----------------------     delete Habit     --------------------------- //
 
     //Bootstrap Classes Applied To The Habit Items
@@ -182,9 +182,8 @@ async function renderHabitItems() {
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
     progressBar.className = "progress-bar bg-warning";
-
     // -----------------------     delete Habit     --------------------------- //
-    deleteHabit.className = "justify-content-right";
+    deleteHabit.className = "fa-solid fa-trash menu-icon"
     // -----------------------     delete Habit     --------------------------- //
 
     progressBar.setAttribute("role", "progressbar");
@@ -204,14 +203,14 @@ async function renderHabitItems() {
     firstMainDiv.appendChild(secondOuterDiv);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
+     // -----------------------     delete Habit     --------------------------- //
+     secondOuterDiv.appendChild(deleteHabit);
+     // -----------------------     delete Habit     --------------------------- //
     progressContainerDiv.appendChild(progressBar);
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
-    firstDivInAnchor.appendChild(streakDiv);
-    // -----------------------     delete Habit     --------------------------- //
-    firstDivInAnchor.appendChild(deleteHabit);
-    // -----------------------     delete Habit     --------------------------- //
+    firstDivInAnchor.appendChild(streakDiv);  
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
   };

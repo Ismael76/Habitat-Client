@@ -89,3 +89,22 @@ async function createNewHabit() {
     console.warn(err);
   }
 }
+
+async function deleteHabit(habitId) {
+  let id = localStorage.getItem("id");
+
+  try {
+    const options = {
+      method: "DELETE",
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+
+    const response = await fetch(
+      `http://localhost:4000/user/habits/${id}/${habitId}`,
+      options
+    );
+    window.location.hash = `#habits`
+      } catch (err) {
+          console.warn(err);
+      }
+    }
