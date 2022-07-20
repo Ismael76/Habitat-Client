@@ -94,6 +94,9 @@ function renderHabitPage() {
   thirdDiv.appendChild(fourthDiv);
   fourthDiv.appendChild(title);
   // fifthDiv.appendChild(title);
+
+  renderHabitPageMenu();
+  renderHabitItems();
 }
 
 function renderHabitPageMenu() {
@@ -123,7 +126,10 @@ function renderHabitPageMenu() {
   listItemIconTwo.className = "fa-solid fa-clock-rotate-left menu-icon";
 
   listItemIconOne.textContent = "Add Habit";
-  listItemIconTwo.textContent = "History";
+
+  listItemOne.setAttribute("data-toggle", "modal");
+  listItemOne.setAttribute("data-target", "#exampleModalCenter");
+  listItemIconTwo.textContent = "Completed";
 
   main.appendChild(menu);
   menu.appendChild(firstDiv);
@@ -138,10 +144,11 @@ function renderHabitPageMenu() {
 }
 
 async function renderHabitItems() {
+  console.log("IN HERE");
   main.className = "reset-styles";
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
-  const habits = await getAllHabits();
+  const habits = await getUserHabits();
   const renderHabit = (habitData) => {
     //All Elements That Make Up Our Habit Item Container
     const firstMainDiv = document.createElement("div");
@@ -160,7 +167,7 @@ async function renderHabitItems() {
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
-    anchor.className = "btn btn-light stretched-link";
+    anchor.className = `btn btn-light stretched-link ${habitData.id}`;
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
@@ -168,18 +175,26 @@ async function renderHabitItems() {
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
-    progressBar.className =
-      "progress-bar progress-bar-striped progress-bar-animated";
+    progressBar.className = "progress-bar bg-warning";
 
+    progressBar.setAttribute("role", "progressbar");
+
+    habitProgressBar(
+      habitData,
+      anchor,
+      progressBarInfo,
+      progressBar,
+      streakDiv
+    );
     //Data Passed Into
     titleDiv.textContent = habitData.title;
-    progressBarInfo.textContent = habitData.frequency;
 
     //Appending To Body
     habitFeed.appendChild(firstMainDiv);
     firstMainDiv.appendChild(secondOuterDiv);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
+    progressContainerDiv.appendChild(progressBar);
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
@@ -191,28 +206,34 @@ async function renderHabitItems() {
   main.appendChild(habitFeed);
 }
 
-function renderCreateHabit() {
-  const fields = [
-    {
-      tag: "input",
-      attributes: { type: "text", name: "name", placeholder: "Name" },
-    },
-    {
-      tag: "input",
-      attributes: { type: "text", name: "frequency", placeholder: "Frequency" },
-    },
-    { tag: "input", attributes: { type: "submit", value: "Create Account" } },
-  ];
-  const form = document.createElement("form");
-  fields.forEach((f) => {
-    let field = document.createElement(f.tag);
-    Object.entries(f.attributes).forEach(([a, v]) => {
-      field.setAttribute(a, v);
-      form.appendChild(field);
-    });
+function habitProgressBar(
+  habitData,
+  anchor,
+  progressBarInfo,
+  progressBar,
+  streakDiv
+) {
+  let checks = 0;
+  progressBarInfo.textContent = "Today: " + checks + "/" + habitData.frequency;
+  let maxProgressBarVal = habitData.frequency;
+  let initialIncrement = 100 / maxProgressBarVal;
+  let subsequentIncrement = initialIncrement;
+
+  anchor.addEventListener("click", (e) => {
+    if (checks !== habitData.frequency) {
+      checks++;
+    }
+
+    if (subsequentIncrement == 100) {
+      progressBar.className = "progress-bar bg-success";
+    }
+    let width = 0;
+    width += initialIncrement;
+    progressBar.setAttribute("style", `width: ${subsequentIncrement}%`);
+    subsequentIncrement += width;
+    progressBarInfo.textContent =
+      "Today: " + checks + "/" + habitData.frequency;
   });
-  form.addEventListener("submit", requestCreateHabit);
-  main.appendChild(form);
 }
 
 function renderProfile() {
