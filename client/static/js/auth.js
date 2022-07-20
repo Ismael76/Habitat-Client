@@ -1,12 +1,10 @@
-const SERVER_URL = require("./url");
+// const SERVER_URL = require("./url");
 
 async function requestLogin(e) {
   const loginData = {
     email: e.target[0].value,
     password: e.target[1].value,
   };
-
-  console.log("IN LOGIN");
 
   e.preventDefault();
   try {
@@ -15,9 +13,8 @@ async function requestLogin(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     };
-    const r = await fetch(`http://localhost:4000/users/login`, options);
+    const r = await fetch(`http://localhost:4000/user/login`, options);
     const data = await r.json();
-    console.log(data);
     if (data.err) {
       throw Error(data.err);
     }
@@ -41,7 +38,7 @@ async function requestRegistration(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registerData),
     };
-    const r = await fetch(`http://localhost:4000/users/register`, options);
+    const r = await fetch(`http://localhost:4000/user/register`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -60,7 +57,7 @@ async function requestCreateHabit(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`https://habitat-app.herokuapp.com/users/`, options);
+    const r = await fetch(`https://habitat-app.herokuapp.com/user/`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -72,8 +69,20 @@ async function requestCreateHabit(e) {
 }
 
 function login(data) {
+  // const payload = jwt_decode(data.token);
+
+  // console.log("<----- data.toke in auth.js ------>");
+  // // console.log(plyload);
+  // console.log("<----- data.toke in auth.js ------>");
+
+  // localStorage.setItem("token", data.token);
+  // localStorage.setItem("username", payload.user);
+  // localStorage.setItem("email", payload.email);
+  localStorage.setItem("id", data.id);
   localStorage.setItem("username", data.user);
-  location.hash = "#habbits";
+  localStorage.setItem("email", data.email);
+
+  location.hash = "#habits";
 }
 
 function logout() {
@@ -82,6 +91,6 @@ function logout() {
 }
 
 function currentUser() {
-  const username = localStorage.getItem("username");
+  const username = localStorage.getItem("email");
   return username;
 }

@@ -3,12 +3,18 @@
 <html style="font-size: 16px;" lang="en">
 
 <head>
+
+    <meta charset="UTF-8" />
+    <title>Habitat</title>
+    <link rel="shortcut icon" href="./static/images/favicon.ico">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Create positive things">
     <meta name="description" content="">
     <title>Home </title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
+
 
     <link rel="stylesheet" href="./static/css/index.css" media="screen">
 
@@ -19,6 +25,17 @@
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black:400">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script defer src="https://kit.fontawesome.com/7750e1dca2.js" crossorigin="anonymous"></script>
+
+
+
+
+    <link rel="stylesheet" href="static/css/style.css">
 
     <script type="application/ld+json">{
                 "@context": "http://schema.org",
@@ -28,24 +45,103 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home ">
     <meta property="og:type" content="website">
+
 </head>
 
 <body>
-    <noscript>I love coffee, I love tea. No JavaScript? Get outta here!</noscript>
+    <header class="heading">
+        <button class="logo-btn wobble" type="button">
+            <img class='logo' src="./static/images/plant.png">
+        </button>
+        <nav></nav>
+    </header>
+    <section class="home">
+        <main>
+            <!-- <div class="container">
+                <div class="row justify-content-center ">
+                    <div class="col-md-8 col-lg-6 mt-3">
+                        <div class="card bg-light text-dark rounded ">
+                            <div class="d-flex card-body justify-content-center">
+                                <p class="text-center h1 font-weight-bold" style="letter-spacing: 7px;">TODAY</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 
-    <nav></nav>
+            <!-- <form id="login">
+                <img src="./static/images/plantvines.png" class="login-plants">
+                <input type="submit" value="Login">
+            </form>
 
-    <main>
-        <form id="login">
-            <input type="submit" value="Login">
-        </form>
+            <form id="logout">
+                <input type="submit" value="Logout">
+            </form>
+            <button id="status">Check status</button> -->
+        </main>
 
-        <form id="logout">
-            <input type="submit" value="Logout">
-        </form>
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> -->
+        <!-- <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content"> -->
+        <!--<div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create a new habit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div> -->
 
-        <button id="status">Check status</button>
-    </main>
+        <!-- <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+        <!-- <div class="modal-content modal-dialog modal-sm">
+                    <form id="habit-form">
+                        <img class="logo" src="static/images/favicon.ico">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Create a new habit</h5>
+                        <input type="text" placeholder="Title">
+                        <input type="number" id="frequency" name="frequency" min="1" max="100">
+                        <input type="submit" data-dismiss="modal">
+                    </form> 
+                </div> -->
+
+        <!-- </div>
+            </div> -->
+        <!-- </div> -->
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header"> -->
+                    <form id="habit-form">
+                        <img class="logo" src="static/images/plant.png">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Create A New Habit</h5>
+                        <input type="text" id="title" name="habitTitle" placeholder="Coffee, Water, Workout, Etc.">
+                        <label for="frequency">Set Frequency Of Habit:</label>
+                        <input type="number" id="frequency" name="habitFrequency" min="1" max="100">
+                        <input type="submit" value="Add Habit">
+                    </form>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <script src='static/js/url.js'></script>
     <script src='static/js/auth.js'></script>
     <script src='static/js/requests.js'></script>
