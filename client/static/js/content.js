@@ -68,7 +68,7 @@ function renderRegisterForm() {
   main.appendChild(form);
 }
 
-function renderHabitPage() {
+function renderHabitPage(text) {
   //Renders 'Today' Box
   const today = document.createElement("section");
   // const firstDiv = document.createElement("div");
@@ -85,7 +85,7 @@ function renderHabitPage() {
   fourthDiv.className = "d-flex card-body justify-content-center";
   title.className = "text-center h1 font-weight-bold";
 
-  title.textContent = "TODAY";
+  title.textContent = text;
 
   main.appendChild(today);
   today.appendChild(firstDiv);
@@ -94,12 +94,9 @@ function renderHabitPage() {
   thirdDiv.appendChild(fourthDiv);
   fourthDiv.appendChild(title);
   // fifthDiv.appendChild(title);
-
-  renderHabitPageMenu();
-  renderHabitItems();
 }
 
-function renderHabitPageMenu() {
+function renderHabitPageMenu(navigation) {
   //Renders 'Menu Options' Box On Habits Page
   main.className = "reset-styles";
   const menu = document.createElement("section");
@@ -109,6 +106,7 @@ function renderHabitPageMenu() {
   const thirdDiv = document.createElement("div");
   const fourthDiv = document.createElement("div");
   const list = document.createElement("ul");
+  const listItemAnchor = document.createElement("a");
   const listItemOne = document.createElement("li");
   const listItemIconOne = document.createElement("i");
   const listItemTwo = document.createElement("li");
@@ -119,6 +117,7 @@ function renderHabitPageMenu() {
   secondDiv.className = "col-md-8 col-lg-6 mt-3";
   thirdDiv.className = "card bg-light text-dark rounded ";
   fourthDiv.className = "d-flex justify-content-center bg-color";
+  listItemAnchor.className = "menu list-item";
   list.className = "menu";
   listItemOne.className = "list-item";
   listItemTwo.className = "list-item";
@@ -129,11 +128,13 @@ function renderHabitPageMenu() {
 
   listItemOne.setAttribute("data-toggle", "modal");
   listItemOne.setAttribute("data-target", "#exampleModalCenter");
-  listItemIconTwo.textContent = "Completed";
+  listItemIconTwo.textContent = navigation;
 
   listItemTwo.addEventListener("click", () => {
-    console.log("clicked!");
-    createNavLink(listItemIconTwo.textContent);
+    listItemAnchor.setAttribute(
+      "href",
+      "#" + `${listItemIconTwo.textContent.toLowerCase()}`
+    );
   });
 
   main.appendChild(menu);
@@ -142,9 +143,10 @@ function renderHabitPageMenu() {
   secondDiv.appendChild(thirdDiv);
   thirdDiv.appendChild(fourthDiv);
   fourthDiv.appendChild(list);
+  list.appendChild(listItemAnchor);
   list.appendChild(listItemOne);
   listItemOne.appendChild(listItemIconOne);
-  list.appendChild(listItemTwo);
+  listItemAnchor.appendChild(listItemTwo);
   listItemTwo.appendChild(listItemIconTwo);
 }
 
@@ -296,7 +298,67 @@ function habitProgressBar(
   });
 }
 
-function renderCompleted() {}
+async function renderCompletedPage() {
+  renderHabitPage("COMPLETED");
+  main.className = "reset-styles";
+  const habitFeed = document.createElement("section");
+  habitFeed.id = "habits";
+  let completedHabits = await getUserCompletedHabits();
+
+  const renderHabit = (habitData) => {
+    const firstMainDiv = document.createElement("div");
+    const secondOuterDiv = document.createElement("div");
+    const anchor = document.createElement("a");
+    const firstDivInAnchor = document.createElement("div");
+    const secondDivInAnchor = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const streakDiv = document.createElement("div");
+    const progressBarInfo = document.createElement("div");
+    const progressBarInfo2 = document.createElement("div");
+    const progressContainerDiv = document.createElement("div");
+    const progressBar = document.createElement("div");
+
+    habitFeed.className = "habit-card-items";
+    firstMainDiv.className = "row justify-content-center";
+    secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    anchor.className = `btn btn-light stretched-link`;
+    firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
+    streakDiv.className = "p-2";
+    progressBarInfo.className = "p-2";
+    progressBarInfo2.className = "p-2";
+    progressContainerDiv.className = "progress";
+    progressBar.className = "progress-bar bg-warning";
+
+    progressBar.setAttribute("role", "progressbar");
+
+    habitProgressBar(
+      habitData,
+      anchor,
+      progressBarInfo,
+      progressBar,
+      streakDiv
+    );
+    //Data Passed Into
+    titleDiv.textContent = habitData.title;
+
+    //Appending To Body
+    habitFeed.appendChild(firstMainDiv);
+    firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(anchor);
+    secondOuterDiv.appendChild(progressContainerDiv);
+    progressContainerDiv.appendChild(progressBar);
+    anchor.appendChild(firstDivInAnchor);
+    anchor.appendChild(secondDivInAnchor);
+    firstDivInAnchor.appendChild(titleDiv);
+    firstDivInAnchor.appendChild(streakDiv);
+    secondDivInAnchor.appendChild(progressBarInfo);
+    secondDivInAnchor.appendChild(progressBarInfo2);
+  };
+  completedHabits.forEach(renderHabit);
+  main.appendChild(habitFeed);
+}
 
 function renderProfile() {
   renderProfileImage();
@@ -312,6 +374,3 @@ function render404() {
   error.textContent = "Oops, We Can't Find That Page Sorry!";
   main.appendChild(error);
 }
-
-
-module.exports = {renderLoginForm, renderRegisterForm, renderHabitPage, renderHabitPageMenu, renderHabitItems, habitProgressBar, renderProfile, render404}

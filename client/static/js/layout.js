@@ -36,14 +36,18 @@ function updateMain(path) {
         renderRegisterForm();
         break;
       case "#habits":
-        // postCurrentUser();
-        renderHabitPage();
+        renderHabitPage("TODAY");
+        renderHabitPageMenu("Completed");
+        renderHabitItems();
         break;
       case "#createHabit":
         renderCreateHabit();
         break;
       case "#profile":
         renderProfile();
+        break;
+      case "#completed":
+        renderCompletedPage();
         break;
       default:
         render404();
