@@ -208,6 +208,38 @@ async function renderHabitItems() {
   main.appendChild(habitFeed);
 }
 
+function setCompletedStatus() {
+  fetch(``, {
+    method: "PATCH",
+    body: JSON.stringify({
+      completed: "t",
+    }),
+    headers: {
+      "Content-type": "application/json",
+    }
+  })
+  .then((r) => r.json())
+  .catch((err) => {
+    console.log("Oh No!");
+  });
+
+  // if (check === data[i].PostID) {
+  //   fetch(`https://rum-wepost.herokuapp.com/emoji1/${data[i].PostID}`, {
+  //     method: "PATCH",
+  //     body: JSON.stringify({
+  //       EmojiOne: emojiCount,
+  //     }),
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //   })
+  //     .then((r) => r.json())
+  //     .catch((err) => {
+  //       console.log("Oh No!");
+  //     });
+  // }
+}
+
 function habitProgressBar(
   habitData,
   anchor,
@@ -243,6 +275,8 @@ function habitProgressBar(
 
     if (subsequentIncrement == 100) {
       progressBar.className = "progress-bar bg-success";
+      setcompletedstatus()
+      console.log("Progress bar is full");
     }
 
     progressBar.setAttribute("style", `width: ${subsequentIncrement}%`);
