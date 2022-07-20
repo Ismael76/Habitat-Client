@@ -144,12 +144,12 @@ function renderHabitPageMenu() {
 }
 
 async function renderHabitItems() {
-  console.log("IN HERE");
+  console.log("IN HERE - function renderHabitItems() in content.js");
   main.className = "reset-styles";
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
   const habits = await getUserHabits();
-  console.log(habits);
+  console.log("habits: " + habits);
   // let id = habitData.id;
   const renderHabit = (habitData) => {
     //All Elements That Make Up Our Habit Item Container
