@@ -9,9 +9,9 @@ describe('index.html', () => {
     beforeEach(() => {
         document.documentElement.innerHTML = html.toString();
     })
-    afterEach(() => {
-    document.getElementsByTagName('html')[0].innerHTML = '';
-  });
+//     afterEach(() => {
+//     document.getElementsByTagName('html')[0].innerHTML = '';
+//   });
 
     describe('HTML elements', () => {
         test('it has a body', () => {

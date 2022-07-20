@@ -50,3 +50,6 @@ async function createNewHabit() {
     console.warn(err);
   }
 }
+
+
+module.exports = {getAllUsers, getUserHabits, createNewHabit, }
