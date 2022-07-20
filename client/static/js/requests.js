@@ -1,6 +1,6 @@
 async function getAllUsers() {
   try {
-    const response = await fetch(`http://localhost:4000/users`);
+    const response = await fetch(`http://localhost:4000/user`);
     const data = await response.json();
     return data;
   } catch (err) {
@@ -15,7 +15,7 @@ async function getUserHabits() {
       header: new Headers({ Authorization: localStorage.getItem("token") }),
     };
     const response = await fetch(
-      `http://localhost:4000/users/habits/${id}`,
+      `http://localhost:4000/user/habits/${id}`,
       options
     );
     const data = await response.json();
@@ -40,7 +40,7 @@ async function createNewHabit() {
       body: JSON.stringify(newHabit),
     };
 
-    const r = await fetch(`http://localhost:4000/users/habits/create`, options);
+    const r = await fetch(`http://localhost:4000/user/habits/create`, options);
     const data = await r.json();
 
     if (data.err) {
