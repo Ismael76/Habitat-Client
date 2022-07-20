@@ -25,6 +25,45 @@ async function getUserHabits() {
   }
 }
 
+async function getUserSpecificHabits() {
+  let id = localStorage.getItem("id");
+  let habitId = localStorage.getItem("habitId");
+
+  try {
+    const options = {
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+    const response = await fetch(
+      `http://localhost:4000/user/habits/${id}/${habitId}`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+async function patchProgress(habitId) {
+  let id = localStorage.getItem("id");
+
+  try {
+    const options = {
+      method: "PATCH",
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+
+    const response = await fetch(
+      `http://localhost:4000/user/habits/${id}/${habitId}`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
 async function createNewHabit() {
   let id = localStorage.getItem("id");
   const newHabit = {

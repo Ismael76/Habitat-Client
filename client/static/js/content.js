@@ -149,6 +149,8 @@ async function renderHabitItems() {
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
   const habits = await getUserHabits();
+  console.log(habits);
+  // let id = habitData.id;
   const renderHabit = (habitData) => {
     //All Elements That Make Up Our Habit Item Container
     const firstMainDiv = document.createElement("div");
@@ -167,7 +169,7 @@ async function renderHabitItems() {
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
-    anchor.className = `btn btn-light stretched-link ${habitData.id}`;
+    anchor.className = `btn btn-light stretched-link`;
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
@@ -214,12 +216,27 @@ function habitProgressBar(
   streakDiv
 ) {
   let checks = 0;
-  progressBarInfo.textContent = "Today: " + checks + "/" + habitData.frequency;
-  let maxProgressBarVal = habitData.frequency;
-  let initialIncrement = 100 / maxProgressBarVal;
-  let subsequentIncrement = initialIncrement;
 
-  anchor.addEventListener("click", (e) => {
+  if (habitData.progression == habitData.frequency) {
+    progressBar.className = "progress-bar bg-success";
+  }
+
+  progressBarInfo.textContent =
+    "Today: " + habitData.progression + "/" + habitData.frequency;
+
+  let initialIncrement = 100 / habitData.frequency;
+  let subsequentIncrement = initialIncrement;
+  progressBar.setAttribute(
+    "style",
+    `width: ${habitData.progression * initialIncrement}%`
+  );
+
+  anchor.addEventListener("click", async (e) => {
+    //PATCH PROGRESSION
+    let returnedData = await patchProgress(habitData.id);
+    //SUBSEQUENT INCREMENT IS NOW EQUAL TO PROGRESSION VALUE IN DATABASE MULTIPLIED BY INITIAL INCREMENT
+    subsequentIncrement = returnedData.progression * initialIncrement;
+
     if (checks !== habitData.frequency) {
       checks++;
     }
@@ -227,10 +244,8 @@ function habitProgressBar(
     if (subsequentIncrement == 100) {
       progressBar.className = "progress-bar bg-success";
     }
-    let width = 0;
-    width += initialIncrement;
+
     progressBar.setAttribute("style", `width: ${subsequentIncrement}%`);
-    subsequentIncrement += width;
     progressBarInfo.textContent =
       "Today: " + checks + "/" + habitData.frequency;
   });
