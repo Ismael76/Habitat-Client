@@ -13,7 +13,7 @@ async function requestLogin(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     };
-    const r = await fetch(`http://localhost:4000/users/login`, options);
+    const r = await fetch(`http://localhost:4000/user/login`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -38,7 +38,7 @@ async function requestRegistration(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registerData),
     };
-    const r = await fetch(`http://localhost:4000/users/register`, options);
+    const r = await fetch(`http://localhost:4000/user/register`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -57,7 +57,7 @@ async function requestCreateHabit(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`https://habitat-app.herokuapp.com/users/`, options);
+    const r = await fetch(`https://habitat-app.herokuapp.com/user/`, options);
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
