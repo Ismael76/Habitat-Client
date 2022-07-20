@@ -165,6 +165,10 @@ async function renderHabitItems() {
     const progressContainerDiv = document.createElement("div");
     const progressBar = document.createElement("div");
 
+    // -----------------------     delete Habit     --------------------------- //
+    const deleteHabit = document.createElement("div");
+    // -----------------------     delete Habit     --------------------------- //
+
     //Bootstrap Classes Applied To The Habit Items
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
@@ -178,6 +182,10 @@ async function renderHabitItems() {
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
     progressBar.className = "progress-bar bg-warning";
+
+    // -----------------------     delete Habit     --------------------------- //
+    deleteHabit.className = "justify-content-right";
+    // -----------------------     delete Habit     --------------------------- //
 
     progressBar.setAttribute("role", "progressbar");
 
@@ -201,6 +209,9 @@ async function renderHabitItems() {
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
     firstDivInAnchor.appendChild(streakDiv);
+    // -----------------------     delete Habit     --------------------------- //
+    firstDivInAnchor.appendChild(deleteHabit);
+    // -----------------------     delete Habit     --------------------------- //
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
   };
