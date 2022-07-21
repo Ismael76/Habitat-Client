@@ -151,11 +151,14 @@ function renderHabitPageMenu(navigation) {
 }
 
 async function renderHabitItems() {
+
+  console.log("IN HERE - function renderHabitItems() in content.js");
+
   main.className = "reset-styles";
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
   const habits = await getUserHabits();
-  console.log(habits);
+  console.log("habits: " + habits);
   // let id = habitData.id;
   const renderHabit = (habitData) => {
     // making the image
@@ -177,6 +180,10 @@ async function renderHabitItems() {
     const progressContainerDiv = document.createElement("div");
     const progressBar = document.createElement("div");
 
+    // -----------------------     delete Habit     --------------------------- //
+    const deleteHabit = document.createElement("button");
+    // -----------------------     delete Habit     --------------------------- //
+
     //Bootstrap Classes Applied To The Habit Items
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
@@ -187,12 +194,17 @@ async function renderHabitItems() {
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2 streak";
-    plantDiv.className = "p-2 plant"
+
+    streakDiv.className = "p-2 streak mr-4";
+    plantDiv.className = "p-2 plant mr-3"
+
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
     progressBar.className = "progress-bar bg-warning";
+    // -----------------------     delete Habit     --------------------------- //
+    deleteHabit.className = "fa-solid fa-trash menu-icon"
+    // -----------------------     delete Habit     --------------------------- //
 
     progressBar.setAttribute("role", "progressbar");
 
@@ -203,7 +215,7 @@ async function renderHabitItems() {
       progressBar,
       streakDiv,
       plantDiv,
-      plantImg,
+      plantImg
     );
 
     //Data Passed Into
@@ -221,13 +233,20 @@ async function renderHabitItems() {
     deleteAnchor.appendChild(deleteIcon);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
+     // -----------------------     delete Habit     --------------------------- //
+     secondOuterDiv.appendChild(deleteHabit);
+     // -----------------------     delete Habit     --------------------------- //
     progressContainerDiv.appendChild(progressBar);
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
 
+
     firstDivInAnchor.appendChild(streakDiv);
     firstDivInAnchor.appendChild(plantDiv);
+
+
+    firstDivInAnchor.appendChild(streakDiv);  
 
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
@@ -300,25 +319,25 @@ function habitProgressBar(
 
   if (habitData.streak < 7) {
     plantImg.setAttribute("src", "./static/images/seed.gif");
-    let container = plantDiv
-    let content = plantDiv.innerHTML
-    container.innerHTML = content
+    let container = plantDiv;
+    let content = plantDiv.innerHTML;
+    container.innerHTML = content;
   } else if (habitData.streak < 30) {
     console.log(plantImg);
     plantImg.setAttribute("src", "./static/images/sapling.gif");
-    let container = plantDiv
-    let content = plantDiv.innerHTML
-    container.innerHTML = content
+    let container = plantDiv;
+    let content = plantDiv.innerHTML;
+    container.innerHTML = content;
   } else if (habitData.streak < 365) {
     plantImg.setAttribute("src", "./static/images/mid.gif");
-    let container = plantDiv
-    let content = plantDiv.innerHTML
-    container.innerHTML = content
+    let container = plantDiv;
+    let content = plantDiv.innerHTML;
+    container.innerHTML = content;
   } else {
     plantImg.setAttribute("src", "./static/images/adult.gif");
-    let container = plantDiv
-    let content = plantDiv.innerHTML
-    container.innerHTML = content
+    let container = plantDiv;
+    let content = plantDiv.innerHTML;
+    container.innerHTML = content;
   }
 
   plantDiv.appendChild(plantImg);
@@ -360,26 +379,37 @@ async function renderCompletedPage() {
   let completedHabits = await getUserCompletedHabits();
 
   const renderHabit = (habitData) => {
+    // making the image
+    const plantImg = document.createElement("img");
+
+    //All Elements That Make Up Our Habit Item Container
     const firstMainDiv = document.createElement("div");
     const secondOuterDiv = document.createElement("div");
+    const deleteAnchor = document.createElement("a");
+    const deleteIcon = document.createElement("i");
     const anchor = document.createElement("a");
     const firstDivInAnchor = document.createElement("div");
     const secondDivInAnchor = document.createElement("div");
     const titleDiv = document.createElement("div");
     const streakDiv = document.createElement("div");
+    const plantDiv = document.createElement("div");
     const progressBarInfo = document.createElement("div");
     const progressBarInfo2 = document.createElement("div");
     const progressContainerDiv = document.createElement("div");
     const progressBar = document.createElement("div");
 
+    //Bootstrap Classes Applied To The Habit Items
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    deleteAnchor.className = "delete-btn";
+    deleteIcon.className = "fa-solid fa-trash-can fa-lg delete-icon";
     anchor.className = `btn btn-light stretched-link`;
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2";
+    streakDiv.className = "p-2 streak";
+    plantDiv.className = "p-2 plant";
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
@@ -392,23 +422,37 @@ async function renderCompletedPage() {
       anchor,
       progressBarInfo,
       progressBar,
-      streakDiv
+      streakDiv,
+      plantDiv,
+      plantImg
     );
+
     //Data Passed Into
     titleDiv.textContent = habitData.title;
+
+    deleteAnchor.addEventListener("click", async () => {
+      await deleteHabit(habitData.id);
+      window.location.reload();
+    });
 
     //Appending To Body
     habitFeed.appendChild(firstMainDiv);
     firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(deleteAnchor);
+    deleteAnchor.appendChild(deleteIcon);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
     progressContainerDiv.appendChild(progressBar);
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
+
     firstDivInAnchor.appendChild(streakDiv);
+    firstDivInAnchor.appendChild(plantDiv);
+
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
+    secondDivInAnchor.appendChild(streakDiv);
   };
   completedHabits.forEach(renderHabit);
   main.appendChild(habitFeed);
