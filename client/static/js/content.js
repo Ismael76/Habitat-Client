@@ -428,3 +428,6 @@ function render404() {
   error.textContent = "Oops, We Can't Find That Page Sorry!";
   main.appendChild(error);
 }
+
+
+module.exports = { renderLoginForm, renderRegisterForm, renderHabitPage, renderHabitPageMenu, renderHabitItems, habitProgressBar, renderProfile, render404} 

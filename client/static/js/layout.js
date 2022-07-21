@@ -77,3 +77,5 @@ function updateContent() {
 }
 
 updateContent();
+
+module.exports = { updateMain, createNavLink, }

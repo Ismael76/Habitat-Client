@@ -1,4 +1,24 @@
 const { renderLoginForm, renderRegisterForm, renderHabitPage, renderHabitPageMenu, renderHabitItems, habitProgressBar, renderProfile, render404} = require('../../../static/js/content')
+const fs = require('fs');
+const path = require('path');
+const html = fs.readFileSync(path.resolve(__dirname, '../../../index.html'), 'utf8');
+
+global.fetch = require('jest-fetch-mock');
+let app;
+
+
+// it needs to do something before it tests
+describe('request', () => {
+    beforeEach(() => {
+        document.documentElement.innerHTML = html.toString();
+        app = require('../../../static/js/content')
+    })
+
+    //it needs to do this after it tests each time.
+    afterEach(() => {
+        fetch.resetMocks();
+    })
+})
 
 
 describe('test renderLoginForm function', () => {

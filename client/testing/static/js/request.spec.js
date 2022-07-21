@@ -18,14 +18,91 @@ describe('request', () => {
         fetch.resetMocks();
     })
 
+    //test user endpointn
     describe('get all user requests', () => {
-        describe('getUserHabits', () => {
+        describe('get all users', () => {
             test('it makes a get request to /users', () => {
                 app.getAllUsers();
                 // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
-                expect(fetch.mock.calls[0][0]).toMatch(/users$/)
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user')
+            })           
+        })
+    })
+
+    //null must be fixed. how to set an id in the app. request? 
+    describe('get all user habits', () => {
+        describe('getUserHabits', () => {
+            test('it makes a get request to /users/habits/1', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
+            })           
+        })
+    })
+
+    //null must be fixed. how to set an id in the app. request? 
+    describe('get user specific habits', () => {
+        describe('getUserSpecificHabits', () => {
+            test('it makes a get request to user/habits/${id}/${habitId}', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
+            })           
+        })
+    })
+
+    //null must be fixed. how to set an id in the app. request? 
+    describe('get user completed habits', () => {
+        describe('getUserSpecificHabits', () => {
+            test('it makes a get request to user/completed/${id}/', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
+            })           
+        })
+    })
+
+
+    //null must be fixed. how to set an id in the app. request? 
+    describe('patch progress function', () => {
+        describe('check patch progress request', () => {
+            test('it makes a get request to user/habits/${id}/${habitId}', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
+            })           
+        })
+    })
+
+    //null must be fixed. how to set an id in the app. request? 
+    describe('create habits', () => {
+        describe('getUserHabits', () => {
+            test('it makes a get request to /users/habits/1', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
             })           
         })
     })
     
+    describe('get profile images', () => {
+        describe('getUserHabits', () => {
+            test('it makes a get request to /users/habits/1', () => {
+                app.getUserHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/profileImage')
+            })           
+        })
+    })
+        
+        //null must be fixed. how to set an id in the app. request? 
+        describe('get delete habit', () => {
+            describe('getUserHabits', () => {
+                test('it makes a get request to /users/habits/1', () => {
+                    app.getUserHabits();
+                    // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                    expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/null')
+                })           
+            })
+        })
 })
