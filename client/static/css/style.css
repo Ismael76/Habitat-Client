@@ -416,6 +416,21 @@ label[for="frequency"] {
   background-color: rgb(156, 239, 4) !important;
 }
 
+
+/* styling plant in the habit */
+.plant {
+  overflow: hidden;
+  max-width: 7rem;
+  max-height: 7rem;
+  border: #d34841 1px solid;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.plant > img {
+  /* width: 100%; */
+  height: 100%;
+}
+
 /* Delete Icon For Habits */
 
 .delete-icon {
@@ -434,3 +449,4 @@ label[for="frequency"] {
 .delete-btn:hover {
   background-color: rgba(177, 167, 167, 0.438);
 }
+

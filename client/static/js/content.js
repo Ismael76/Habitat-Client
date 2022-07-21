@@ -158,6 +158,9 @@ async function renderHabitItems() {
   console.log(habits);
   // let id = habitData.id;
   const renderHabit = (habitData) => {
+    // making the image
+    const plantImg = document.createElement("img");
+
     //All Elements That Make Up Our Habit Item Container
     const firstMainDiv = document.createElement("div");
     const secondOuterDiv = document.createElement("div");
@@ -168,6 +171,7 @@ async function renderHabitItems() {
     const secondDivInAnchor = document.createElement("div");
     const titleDiv = document.createElement("div");
     const streakDiv = document.createElement("div");
+    const plantDiv = document.createElement("div");
     const progressBarInfo = document.createElement("div");
     const progressBarInfo2 = document.createElement("div");
     const progressContainerDiv = document.createElement("div");
@@ -183,7 +187,8 @@ async function renderHabitItems() {
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2";
+    streakDiv.className = "p-2 streak";
+    plantDiv.className = "p-2 plant"
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
@@ -196,7 +201,9 @@ async function renderHabitItems() {
       anchor,
       progressBarInfo,
       progressBar,
-      streakDiv
+      streakDiv,
+      plantDiv,
+      plantImg,
     );
 
     //Data Passed Into
@@ -218,6 +225,10 @@ async function renderHabitItems() {
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
+
+    firstDivInAnchor.appendChild(streakDiv);
+    firstDivInAnchor.appendChild(plantDiv);
+
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
     secondDivInAnchor.appendChild(streakDiv);
@@ -272,7 +283,9 @@ function habitProgressBar(
   anchor,
   progressBarInfo,
   progressBar,
-  streakDiv
+  streakDiv,
+  plantDiv,
+  plantImg
 ) {
   if (habitData.progression == habitData.frequency) {
     progressBar.className = "progress-bar bg-success";
@@ -282,6 +295,33 @@ function habitProgressBar(
     "TODAY: " + habitData.progression + "/" + habitData.frequency;
 
   streakDiv.textContent = "STREAK: " + habitData.streak;
+
+  streakDiv.textContent = `Streak: ${habitData.streak}`;
+
+  if (habitData.streak < 7) {
+    plantImg.setAttribute("src", "./static/images/seed.gif");
+    let container = plantDiv
+    let content = plantDiv.innerHTML
+    container.innerHTML = content
+  } else if (habitData.streak < 30) {
+    console.log(plantImg);
+    plantImg.setAttribute("src", "./static/images/sapling.gif");
+    let container = plantDiv
+    let content = plantDiv.innerHTML
+    container.innerHTML = content
+  } else if (habitData.streak < 365) {
+    plantImg.setAttribute("src", "./static/images/mid.gif");
+    let container = plantDiv
+    let content = plantDiv.innerHTML
+    container.innerHTML = content
+  } else {
+    plantImg.setAttribute("src", "./static/images/adult.gif");
+    let container = plantDiv
+    let content = plantDiv.innerHTML
+    container.innerHTML = content
+  }
+
+  plantDiv.appendChild(plantImg);
 
   let initialIncrement = 100 / habitData.frequency;
   let subsequentIncrement = initialIncrement;
@@ -303,6 +343,7 @@ function habitProgressBar(
     if (subsequentIncrement == 100) {
       progressBar.className = "progress-bar bg-success";
       progressBar.setAttribute("style", `width: 100%`);
+      location.reload(); //reece set this to test
     }
 
     progressBar.setAttribute("style", `width: ${subsequentIncrement}%`);
