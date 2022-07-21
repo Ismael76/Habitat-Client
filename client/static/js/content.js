@@ -218,9 +218,9 @@ async function renderHabitItems() {
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
-    firstDivInAnchor.appendChild(streakDiv);
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
+    secondDivInAnchor.appendChild(streakDiv);
   };
   habits.forEach(renderHabit);
   main.appendChild(habitFeed);
@@ -279,7 +279,9 @@ function habitProgressBar(
   }
 
   progressBarInfo.textContent =
-    "Today: " + habitData.progression + "/" + habitData.frequency;
+    "TODAY: " + habitData.progression + "/" + habitData.frequency;
+
+  streakDiv.textContent = "STREAK: " + habitData.streak;
 
   let initialIncrement = 100 / habitData.frequency;
   let subsequentIncrement = initialIncrement;
@@ -300,7 +302,6 @@ function habitProgressBar(
 
     if (subsequentIncrement == 100) {
       progressBar.className = "progress-bar bg-success";
-      // setcompletedstatus();
       progressBar.setAttribute("style", `width: 100%`);
     }
 
