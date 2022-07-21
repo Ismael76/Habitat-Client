@@ -189,7 +189,7 @@ async function renderHabitItems() {
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
 
     streakDiv.className = "p-2 streak mr-4";
-    plantDiv.className = "p-2 plant mr-3"
+    plantDiv.className = "p-2 plant mr-3";
 
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
@@ -391,8 +391,8 @@ async function renderCompletedPage() {
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2 streak";
-    plantDiv.className = "p-2 plant";
+    streakDiv.className = "p-2 streak mr-4";
+    plantDiv.className = "p-2 plant mr-3";
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
