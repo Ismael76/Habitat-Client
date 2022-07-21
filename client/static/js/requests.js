@@ -44,9 +44,25 @@ async function getUserSpecificHabits() {
   }
 }
 
+async function getUserCompletedHabits() {
+  let id = localStorage.getItem("id");
+  try {
+    const options = {
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+    const response = await fetch(
+      `http://localhost:4000/user/completed/${id}`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
 async function patchProgress(habitId) {
   let id = localStorage.getItem("id");
-
   try {
     const options = {
       method: "PATCH",
@@ -90,5 +106,30 @@ async function createNewHabit() {
   }
 }
 
+async function getProfileImages() {
+  try {
+    const options = {
+      header: new Headers({ Authorization: localStorage.getItem("token") }),
+    };
+    const response = await fetch(
+      `http://localhost:4000/user/profileImage`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+}
 
-module.exports = {getAllUsers, getUserHabits, createNewHabit, }
+async function deleteHabit(habitId) {
+  let id = localStorage.getItem("id");
+  try {
+    const options = { method: "DELETE" };
+    await fetch(`http://localhost:4000/user/habits/${id}/${habitId}`, options);
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+module.exports = { getAllUsers, getUserHabits, createNewHabit };
