@@ -156,6 +156,25 @@ async function renderHabitItems() {
   habitFeed.id = "habits";
   const habits = await getUserHabits();
   console.log(habits);
+
+  ///////// Change habits to order //////////////////
+
+  function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const habitA = a.streak
+    const habitB = b.streak
+  
+    let comparison = 0;
+    if (habitA > habitB) {
+      comparison = 1;
+    } else if (habitA < habitB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+  habits.sort(compare).reverse();
+
   // let id = habitData.id;
   const renderHabit = (habitData) => {
     // making the image
@@ -187,8 +206,10 @@ async function renderHabitItems() {
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2 streak";
-    plantDiv.className = "p-2 plant";
+
+    streakDiv.className = "p-2 streak mr-4";
+    plantDiv.className = "p-2 plant mr-3";
+
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
@@ -237,14 +258,13 @@ async function renderHabitItems() {
   main.appendChild(habitFeed);
 }
 
-async function renderProfileImage() {
-  let returnedImageData = await getProfileImages();
-  let profileImg = document.createElement("img");
+// async function renderProfileImage() {
+//   let returnedImageData = await getProfileImages();
+//   let profileImg = document.createElement("img");
 
-  profileImg.setAttribute("src", returnedImageData[0].src);
-
-  main.appendChild(profileImg);
-}
+//   // profileImg.setAttribute("src", returnedImageData[0].src);
+//   // main.appendChild(profileImg);
+// }
 
 function setCompletedStatus() {
   fetch(``, {
@@ -389,8 +409,8 @@ async function renderCompletedPage() {
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
-    streakDiv.className = "p-2 streak";
-    plantDiv.className = "p-2 plant";
+    streakDiv.className = "p-2 streak mr-4";
+    plantDiv.className = "p-2 plant mr-3";
     progressBarInfo.className = "p-2";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
@@ -439,12 +459,143 @@ async function renderCompletedPage() {
   main.appendChild(habitFeed);
 }
 
-function renderProfile() {
-  renderProfileImage();
-  const profile = document.createElement("section");
-  const greeting = document.createElement("h3");
+async function renderProfile() {
+  // renderProfileImage();
+  main.className = "reset-styles";
+  const profile = document.createElement("section"); // this section should be the size of the section for the habits
+  const div1 = document.createElement("div"); // Create a div to work as the row container in bootstrap
+  const div2 = document.createElement("div"); // create a div to be the first column which holds profile pic takes col-4
+  const div3 = document.createElement("div"); // Create a div to be the second column to hold habits col-8
+  const profileDiv = document.createElement("div") // This div goes inside div 2 and should contain a margin and border to hold image
+  const greeting = document.createElement("h3"); // This should also be a child of div 2
+  const topThreeHabits = document.createElement("h3") // This should display in the div 3
+  const threeHabits = document.createElement("div"); // Contains the three habits
+  const profilePic = document.createElement("img"); //holds the image of the user
+
+  topThreeHabits.textContent = "Your top 3 habits";
   greeting.textContent = `Hi there, ${localStorage.getItem("username")}!`;
-  profile.appendChild(greeting);
+  profilePic.setAttribute("src", "./static/images/profileplaceholder.png");
+
+  profile.className ="container bg-primary";
+  div1.className = "row bg-danger mt-4";
+  div2.className = "col-4 bg-primary p-3";
+  div3.className = "col-8 bg-danger";
+  profilePic.className = "profile-pic";
+  profileDiv.className = "profile-div"
+  greeting.className = "mt-3 mb-2 text-center profile-name";
+  topThreeHabits.className = "text-center mt-2 profile-header";
+  threeHabits.className = "bg-primary p-5";
+
+  ///////////////// Making the habit Items ////////////////////
+  const habitFeed = document.createElement("section");
+  habitFeed.id = "habits";
+  const habits = await getUserHabits();
+  console.log(habits, "************ This is the habits **************");
+  // let id = habitData.id;
+
+  ////////////////////// Getting top 3 habits //////////////////
+
+  function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const habitA = a.streak
+    const habitB = b.streak
+  
+    let comparison = 0;
+    if (habitA > habitB) {
+      comparison = 1;
+    } else if (habitA < habitB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+  habits.sort(compare)
+
+  let topThree = habits.slice(-3).reverse();
+  ////////////////////// Getting top 3 habits //////////////////
+
+
+  const renderHabit = (habitData) => {
+    // making the image
+    const plantImg = document.createElement("img");
+
+    //All Elements That Make Up Our Habit Item Container
+    const firstMainDiv = document.createElement("div");
+    const secondOuterDiv = document.createElement("div");
+    const anchor = document.createElement("a");
+    const firstDivInAnchor = document.createElement("div");
+    const secondDivInAnchor = document.createElement("div");
+    const titleDiv = document.createElement("div");
+    const streakDiv = document.createElement("div");
+    const plantDiv = document.createElement("div");
+    const progressBarInfo = document.createElement("div");
+    const progressBarInfo2 = document.createElement("div");
+    const progressContainerDiv = document.createElement("div");
+    const progressBar = document.createElement("div");
+
+    //Bootstrap Classes Applied To The Habit Items
+    habitFeed.className = "habit-card-items";
+    firstMainDiv.className = "row justify-content-center";
+    secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    anchor.className = `btn btn-light stretched-link`;
+    firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
+    titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
+
+    streakDiv.className = "p-2 streak mr-4";
+    plantDiv.className = "p-2 plant mr-3";
+
+    progressBarInfo.className = "p-2";
+    progressBarInfo2.className = "p-2";
+    progressContainerDiv.className = "progress";
+    progressBar.className = "progress-bar bg-warning";
+
+    progressBar.setAttribute("role", "progressbar");
+
+    habitProgressBar(
+      habitData,
+      anchor,
+      progressBarInfo,
+      progressBar,
+      streakDiv,
+      plantDiv,
+      plantImg
+    );
+
+    //Data Passed Into
+    titleDiv.textContent = habitData.title;
+
+    //Appending To Body
+    habitFeed.appendChild(firstMainDiv);
+    firstMainDiv.appendChild(secondOuterDiv);
+    secondOuterDiv.appendChild(anchor);
+    secondOuterDiv.appendChild(progressContainerDiv);
+    progressContainerDiv.appendChild(progressBar);
+    anchor.appendChild(firstDivInAnchor);
+    anchor.appendChild(secondDivInAnchor);
+    firstDivInAnchor.appendChild(titleDiv);
+
+    firstDivInAnchor.appendChild(streakDiv);
+    firstDivInAnchor.appendChild(plantDiv);
+
+    secondDivInAnchor.appendChild(progressBarInfo);
+    secondDivInAnchor.appendChild(progressBarInfo2);
+    secondDivInAnchor.appendChild(streakDiv);
+  };
+  topThree.forEach(renderHabit);
+
+  ///////////////// Making the habit Items ////////////////////
+
+  threeHabits.appendChild(habitFeed);
+  profileDiv.appendChild(profilePic);
+  div2.appendChild(profileDiv);
+  div2.appendChild(greeting);
+  div3.appendChild(topThreeHabits);
+  div3.appendChild(threeHabits);
+  div1.appendChild(div2);
+  div1.appendChild(div3);
+  profile.appendChild(div1);
+  
   main.appendChild(profile);
 }
 
