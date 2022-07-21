@@ -413,7 +413,8 @@ label[for="frequency"] {
 }
 
 .bg-color {
-  background-color: rgb(156, 239, 4) !important;
+  /* background-color: rgb(156, 239, 4) !important; */
+  background-color: #27974e;
 }
 
 /* styling plant in the habit */
@@ -469,13 +470,15 @@ label[for="frequency"] {
   background-color: #ffffff;
   border-radius: 50%;
   overflow: hidden;
-}
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
 .profile-pic {
   width: 100%;
 }
 
 .profile-header {
-  color: #0d7c34;
+
+  color: #ffffff;
+
   /* font-family: 'Black Ops One', cursive; */
   /* font-family: 'Life Savers', cursive; */
   font-family: "Nova Round", cursive;
@@ -483,10 +486,15 @@ label[for="frequency"] {
   /* font-family: 'Rubik Moonrocks', cursive; */
   /* font-family: "Short Stack", cursive; */
   font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  border-radius: 5px;
 }
 
 .profile-name {
-  color: #0d7c34;
+
+  color: #ffffff;
+
   /* font-family: 'Black Ops One', cursive; */
   /* font-family: 'Life Savers', cursive; */
   /* font-family: 'Nova Round', cursive; */
@@ -494,4 +502,54 @@ label[for="frequency"] {
   /* font-family: 'Rubik Moonrocks', cursive; */
   font-family: "Short Stack", cursive;
   font-size: 1.3rem;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  border-radius: 5px;
 }
+
+/* Styling logout button */
+
+button {
+  background-color: #d34841;
+  border: none;
+  color: #ffffff;
+  font-family: "Short Stack", cursive;
+  height: 100%;
+  padding: 3px;
+}
+
+button:hover {
+  background-color: #e07670;
+  transition: 0.5s;
+}
+
+.hcontent {
+  /* border: solid 1px #000000; */
+  background-color: #ffffff;
+  box-shadow: inset 12px 0 15px -4px rgba(31, 73, 125, 0.8), inset -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+  height: 25rem;
+  overflow: scroll;
+}
+
+.holder {
+  /* border: solid 1px #000000; */
+  background-color: #d34841;
+  height: 30rem;
+  border-radius: 5px;
+}
+
+.profpic {
+  background-color: #d34841;
+  border-radius: 5px;
+}
+
+.profcard {
+  border-radius: 25px;
+  background-color: #f2f2f2;
+  background-color: #d34841;
+  /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+}
+
