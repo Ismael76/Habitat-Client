@@ -1,6 +1,7 @@
 const nav = document.querySelector("nav");
 const main = document.querySelector("main");
 const modal = document.querySelector("#habit-form");
+const deleteBtn = document.querySelector("button");
 
 const publicRoutes = ["#", "#login", "#register"];
 const privateRoutes = ["#habits", "#profile"];
@@ -8,6 +9,7 @@ const privateRoutes = ["#habits", "#profile"];
 window.addEventListener("hashchange", updateContent);
 
 modal.addEventListener("submit", createNewHabit);
+deleteBtn.addEventListener("click", console.log('button delete'));
 
 function updateNav() {
   nav.innerHTML = "";
@@ -15,7 +17,7 @@ function updateNav() {
   let logoutBtn;
   if (currentUser()) {
     links = privateRoutes.map(createNavLink);
-    logoutBtn = document.createElement("button");
+    logoutBtn = document.createElement("a");
     logoutBtn.textContent = "Logout";
     logoutBtn.onclick = logout;
     nav.appendChild(logoutBtn);
@@ -77,3 +79,5 @@ function updateContent() {
 }
 
 updateContent();
+
+module.exports = { updateNav, updateMain, createNavLink, updateContent}
