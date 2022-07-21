@@ -132,7 +132,10 @@ async function deleteHabit(habitId) {
   }
 }
 
-module.exports = { getAllUsers, getUserHabits, createNewHabit };
+
+module.exports = { getAllUsers, getUserHabits,getUserSpecificHabits,getUserCompletedHabits, patchProgress,getProfileImages, createNewHabit, deleteHabit };
+
+
 
 async function deleteHabit(habitId) {
   let id = localStorage.getItem("id");
@@ -152,4 +155,5 @@ async function deleteHabit(habitId) {
           console.warn(err);
       }
     }
+
 

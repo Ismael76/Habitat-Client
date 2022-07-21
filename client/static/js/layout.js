@@ -17,7 +17,7 @@ function updateNav() {
   let logoutBtn;
   if (currentUser()) {
     links = privateRoutes.map(createNavLink);
-    logoutBtn = document.createElement("button");
+    logoutBtn = document.createElement("a");
     logoutBtn.textContent = "Logout";
     logoutBtn.onclick = logout;
     nav.appendChild(logoutBtn);
@@ -79,3 +79,5 @@ function updateContent() {
 }
 
 updateContent();
+
+module.exports = { updateNav, updateMain, createNavLink, updateContent}

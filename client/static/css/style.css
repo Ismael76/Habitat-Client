@@ -416,7 +416,6 @@ label[for="frequency"] {
   background-color: rgb(156, 239, 4) !important;
 }
 
-
 /* styling plant in the habit */
 .plant {
   overflow: hidden;
@@ -450,3 +449,49 @@ label[for="frequency"] {
   background-color: rgba(177, 167, 167, 0.438);
 }
 
+/* Error Messages For Register & Login Pages */
+
+#emailError,
+#passwordError,
+#emailRegError,
+#passwordRegError,
+#passwordConfError,
+#usernameRegError {
+  font-family: "Short Stack", cursive !important;
+  color: red;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+/* ////////Editing for profile///////// */
+.profile-div {
+  width: 100%;
+  /* height: 100%; */
+  background-color: #ffffff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile-pic {
+  width: 100%;
+}
+
+.profile-header {
+  color: #0d7c34;
+  /* font-family: 'Black Ops One', cursive; */
+  /* font-family: 'Life Savers', cursive; */
+  font-family: "Nova Round", cursive;
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Rubik Moonrocks', cursive; */
+  /* font-family: "Short Stack", cursive; */
+  font-size: 1.5rem;
+}
+
+.profile-name {
+  color: #0d7c34;
+  /* font-family: 'Black Ops One', cursive; */
+  /* font-family: 'Life Savers', cursive; */
+  /* font-family: 'Nova Round', cursive; */
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Rubik Moonrocks', cursive; */
+  font-family: "Short Stack", cursive;
+  font-size: 1.3rem;
+}
