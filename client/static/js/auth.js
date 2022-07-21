@@ -1,47 +1,50 @@
 // const SERVER_URL = require("./url");
 
 async function requestLogin(e) {
+  e.preventDefault();
   const loginData = {
     email: e.target[0].value,
     password: e.target[1].value,
   };
 
-  e.preventDefault();
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     };
-    const r = await fetch(`http://localhost:4000/user/login`, options);
+    const r = await fetch(
+      `https://habitat-app.herokuapp.com/user/login`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
     }
     login(data);
   } catch (err) {
+    passwordError.textContent = "Email & Password Incorrect!";
     console.warn(`Error: ${err}`);
   }
 }
 
 async function requestRegistration(e) {
   e.preventDefault();
-  console.log("registered!");
   let users = await getAllUsers();
 
   for (let i = 0; i < users.length; i++) {
     if (e.target[0].value == users[i].email) {
-      alert("Email Already In Use :(");
+      emailRegError.textContent = "The Email Provided Is Already In Use";
       return;
     }
 
     if (e.target[3].value == users[i].username) {
-      alert("Username Already In Use :(");
+      usernameRegError.textContent = "The Username Provided Is Already In Use";
       return;
     }
 
     if (e.target[1].value !== e.target[2].value) {
-      alert("Passwords Do Not Match :(");
+      passwordConfError.textContent = "Passwords Do Not Match";
       return;
     }
   }
@@ -59,7 +62,10 @@ async function requestRegistration(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registerData),
     };
-    const r = await fetch(`http://localhost:4000/user/register`, options);
+    const r = await fetch(
+      `https://habitat-app.herokuapp.com/user/register`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -96,3 +102,11 @@ function currentUser() {
   const username = localStorage.getItem("email");
   return username;
 }
+
+module.exports = {
+  requestLogin,
+  requestRegistration,
+  login,
+  logout,
+  currentUser,
+};
