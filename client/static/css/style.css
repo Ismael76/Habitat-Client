@@ -533,3 +533,8 @@ button:hover {
   background-color: #d34841;
   /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.cycle {
+  width: 10rem; 
+}

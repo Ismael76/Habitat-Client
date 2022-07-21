@@ -2,7 +2,7 @@ const nav = document.querySelector("nav");
 const main = document.querySelector("main");
 const modal = document.querySelector("#habit-form");
 
-const publicRoutes = ["#", "#login", "#register"];
+const publicRoutes = ["#home", "#login", "#register"];
 const privateRoutes = ["#habits", "#profile"];
 
 window.addEventListener("hashchange", updateContent);
@@ -29,6 +29,9 @@ function updateMain(path) {
   main.innerHTML = "";
   if (path) {
     switch (path) {
+      case "#home":
+        renderHome();
+        break;
       case "#login":
         renderLoginForm();
         break;

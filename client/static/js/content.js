@@ -1,3 +1,24 @@
+function renderHome() {
+  const container = document.createElement("div");
+  const row = document.createElement("div");
+  const col1 = document.createElement("div");
+  const col2 = document.createElement("div");
+  const lifecycle = document.createElement("img");
+
+  lifecycle.setAttribute("src", "./static/images/plantfullcycle.gif");
+  lifecycle.className = "cycle";
+  container.className = "container";
+  row.className = "row";
+  col1.className = "col-10";
+  col2.className = "col-2";
+
+  col2.appendChild(lifecycle);
+  row.appendChild(col1);
+  row.appendChild(col2);
+  container.appendChild(row);
+  main.appendChild(container);
+}
+
 function renderLoginForm() {
   main.className = "";
   const fields = [
