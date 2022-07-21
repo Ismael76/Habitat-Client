@@ -18,14 +18,45 @@ describe('request', () => {
         fetch.resetMocks();
     })
 
-    //test user endpointn
-    describe('get all user requests', () => {
+    //test user call
+    describe('get UserSpecificHabits', () => {
+        describe('get all users',  () => {
+            test('it makes a get request to /user', () => {
+                app.getUserSpecificHabits();
+                // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
+                expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user/habits/1/1')
+                expect(fetch.mock.calls[0][1]).resolves
+            })           
+        })
+    })
+
+      //test get user habits call endpointn
+      describe('get all user habits requests', () => {
         describe('get all users', () => {
-            test('it makes a get request to /users', () => {
-                app.getAllUsers();
+            test('it makes a get request to /user', () => {
+                app.getUserHabits();
                 // expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/cats$/))
                 expect(fetch.mock.calls[0][0]).toMatch('http://localhost:4000/user')
+                expect(fetch.mock.calls[0][1]).resolves
             })           
+        })
+    })
+
+
+
+    describe('delete habit', () => {
+        test('it makes a DELETE request to /user/habits/1/1 with the habit data',async () => {
+            const fakeDeleteEvent = {
+                preventDefault: jest.fn(),
+                target: {
+                    id: { value: 1 },
+                }
+            }
+
+            app.deleteHabit(fakeDeleteEvent);
+            expect(fetch.mock.calls[0][1]).toHaveProperty('method', 'DELETE');
+            expect(fetch.mock.calls[0][1]).resolves
+       ;
         })
     })
 

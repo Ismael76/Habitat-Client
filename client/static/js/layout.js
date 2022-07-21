@@ -78,4 +78,4 @@ function updateContent() {
 
 updateContent();
 
-module.exports = { updateMain, createNavLink, }
+module.exports = { updateNav, updateMain, createNavLink, updateContent}

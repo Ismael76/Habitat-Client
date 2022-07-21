@@ -132,4 +132,4 @@ async function deleteHabit(habitId) {
   }
 }
 
-module.exports = { getAllUsers, getUserHabits, createNewHabit };
+module.exports = { getAllUsers, getUserHabits,getUserSpecificHabits,getUserCompletedHabits, patchProgress,getProfileImages, createNewHabit, deleteHabit };

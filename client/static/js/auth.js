@@ -75,3 +75,5 @@ function currentUser() {
   const username = localStorage.getItem("email");
   return username;
 }
+
+module.exports = {requestLogin, requestRegistration, login, logout, currentUser}
