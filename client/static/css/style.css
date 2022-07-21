@@ -452,10 +452,14 @@ label[for="frequency"] {
 /* Error Messages For Register & Login Pages */
 
 #emailError,
-#passwordError {
+#passwordError,
+#emailRegError,
+#passwordRegError,
+#passwordConfError,
+#usernameRegError {
   font-family: "Short Stack", cursive !important;
   color: red;
-  font-weight: bolder;
+  font-weight: 800;
   font-size: 0.8rem;
 }
 /* ////////Editing for profile///////// */
