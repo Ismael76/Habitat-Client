@@ -231,7 +231,6 @@ function renderHabitPageMenu(navigation) {
 }
 
 async function renderHabitItems() {
-
   console.log("IN HERE - function renderHabitItems() in content.js");
 
   main.className = "reset-styles";
@@ -259,7 +258,6 @@ async function renderHabitItems() {
 
   habits.sort(compare).reverse();
 
-
   // let id = habitData.id;
   const renderHabit = (habitData) => {
     // making the image
@@ -281,10 +279,6 @@ async function renderHabitItems() {
     const progressContainerDiv = document.createElement("div");
     const progressBar = document.createElement("div");
 
-    // -----------------------     delete Habit     --------------------------- //
-    const deleteHabit = document.createElement("button");
-    // -----------------------     delete Habit     --------------------------- //
-
     //Bootstrap Classes Applied To The Habit Items
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
@@ -303,9 +297,6 @@ async function renderHabitItems() {
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
     progressBar.className = "progress-bar bg-warning";
-    // -----------------------     delete Habit     --------------------------- //
-    deleteHabit.className = "fa-solid fa-trash menu-icon"
-    // -----------------------     delete Habit     --------------------------- //
 
     progressBar.setAttribute("role", "progressbar");
 
@@ -334,20 +325,15 @@ async function renderHabitItems() {
     deleteAnchor.appendChild(deleteIcon);
     secondOuterDiv.appendChild(anchor);
     secondOuterDiv.appendChild(progressContainerDiv);
-     // -----------------------     delete Habit     --------------------------- //
-     secondOuterDiv.appendChild(deleteHabit);
-     // -----------------------     delete Habit     --------------------------- //
     progressContainerDiv.appendChild(progressBar);
     anchor.appendChild(firstDivInAnchor);
     anchor.appendChild(secondDivInAnchor);
     firstDivInAnchor.appendChild(titleDiv);
 
-
     firstDivInAnchor.appendChild(streakDiv);
     firstDivInAnchor.appendChild(plantDiv);
 
-
-    firstDivInAnchor.appendChild(streakDiv);  
+    firstDivInAnchor.appendChild(streakDiv);
 
     secondDivInAnchor.appendChild(progressBarInfo);
     secondDivInAnchor.appendChild(progressBarInfo2);
@@ -703,5 +689,13 @@ function render404() {
   main.appendChild(error);
 }
 
-
-module.exports = { renderLoginForm, renderRegisterForm, renderHabitPage, renderHabitPageMenu, renderHabitItems, habitProgressBar, renderProfile, render404} 
+module.exports = {
+  renderLoginForm,
+  renderRegisterForm,
+  renderHabitPage,
+  renderHabitPageMenu,
+  renderHabitItems,
+  habitProgressBar,
+  renderProfile,
+  render404,
+};

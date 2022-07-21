@@ -13,7 +13,10 @@ async function requestLogin(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
     };
-    const r = await fetch(`http://localhost:4000/user/login`, options);
+    const r = await fetch(
+      `https://habitat-app.herokuapp.com/user/login`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -59,7 +62,10 @@ async function requestRegistration(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registerData),
     };
-    const r = await fetch(`http://localhost:4000/user/register`, options);
+    const r = await fetch(
+      `https://habitat-app.herokuapp.com/user/register`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
@@ -97,4 +103,10 @@ function currentUser() {
   return username;
 }
 
-module.exports = {requestLogin, requestRegistration, login, logout, currentUser}
+module.exports = {
+  requestLogin,
+  requestRegistration,
+  login,
+  logout,
+  currentUser,
+};
