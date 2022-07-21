@@ -9,7 +9,7 @@ const privateRoutes = ["#habits", "#profile"];
 window.addEventListener("hashchange", updateContent);
 
 modal.addEventListener("submit", createNewHabit);
-deleteBtn.addEventListener("click", console.log('button delete'));
+// deleteBtn.addEventListener("click", console.log('button delete'));
 
 function updateNav() {
   nav.innerHTML = "";
@@ -80,4 +80,4 @@ function updateContent() {
 
 updateContent();
 
-module.exports = { updateNav, updateMain, createNavLink, updateContent}
+module.exports = { updateNav, updateMain, createNavLink, updateContent };
