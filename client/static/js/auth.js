@@ -1,12 +1,12 @@
 // const SERVER_URL = require("./url");
 
 async function requestLogin(e) {
+  e.preventDefault();
   const loginData = {
     email: e.target[0].value,
     password: e.target[1].value,
   };
 
-  e.preventDefault();
   try {
     const options = {
       method: "POST",
@@ -20,11 +20,32 @@ async function requestLogin(e) {
     }
     login(data);
   } catch (err) {
+    passwordError.textContent = "Email & Password Incorrect!";
     console.warn(`Error: ${err}`);
   }
 }
 
 async function requestRegistration(e) {
+  e.preventDefault();
+  let users = await getAllUsers();
+
+  for (let i = 0; i < users.length; i++) {
+    if (e.target[0].value == users[i].email) {
+      emailRegError.textContent = "The Email Provided Is Already In Use";
+      return;
+    }
+
+    if (e.target[3].value == users[i].username) {
+      usernameRegError.textContent = "The Username Provided Is Already In Use";
+      return;
+    }
+
+    if (e.target[1].value !== e.target[2].value) {
+      passwordConfError.textContent = "Passwords Do Not Match";
+      return;
+    }
+  }
+
   e.preventDefault();
   const registerData = {
     username: e.target[3].value,
