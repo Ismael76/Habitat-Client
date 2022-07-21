@@ -43,7 +43,7 @@ describe('request', () => {
             })
         })
 
-        describe('test renderHabitPageMenu function', () => {
+        describe('test renderHabit PageMenu function', () => {
             test('test renderHabitPageMenu function exists', () => {
                 expect(renderHabitPageMenu).toBeDefined()
             })
