@@ -26,6 +26,27 @@ async function requestLogin(e) {
 
 async function requestRegistration(e) {
   e.preventDefault();
+  console.log("registered!");
+  let users = await getAllUsers();
+
+  for (let i = 0; i < users.length; i++) {
+    if (e.target[0].value == users[i].email) {
+      alert("Email Already In Use :(");
+      return;
+    }
+
+    if (e.target[3].value == users[i].username) {
+      alert("Username Already In Use :(");
+      return;
+    }
+
+    if (e.target[1].value !== e.target[2].value) {
+      alert("Passwords Do Not Match :(");
+      return;
+    }
+  }
+
+  e.preventDefault();
   const registerData = {
     username: e.target[3].value,
     email: e.target[0].value,
