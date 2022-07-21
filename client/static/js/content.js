@@ -3,15 +3,31 @@ function renderLoginForm() {
   const fields = [
     {
       tag: "input",
-      attributes: { type: "email", name: "email", placeholder: "Email" },
+      attributes: {
+        type: "email",
+        id: "email",
+        name: "email",
+        placeholder: "Email",
+        required: "",
+      },
+    },
+    {
+      tag: "p",
+      attributes: { id: "emailError" },
     },
     {
       tag: "input",
       attributes: {
         type: "password",
         name: "password",
+        id: "password",
         placeholder: "Password",
+        required: "",
       },
+    },
+    {
+      tag: "p",
+      attributes: { id: "passwordError" },
     },
     { tag: "input", attributes: { type: "submit", value: "Login" } },
   ];
@@ -20,9 +36,19 @@ function renderLoginForm() {
     let field = document.createElement(f.tag);
     Object.entries(f.attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
+
+      if (f.tag == "p") {
+        if (f.attributes.id == "emailError") {
+          field.textContent = "You Have Entered An Incorrect Email!";
+        } else if (f.attributes.id == "passwordError") {
+          field.textContent = "You Have Entered An Incorrect Password";
+        }
+      }
+
       form.appendChild(field);
     });
   });
+
   form.addEventListener("submit", requestLogin);
   main.appendChild(form);
 }
@@ -32,7 +58,12 @@ function renderRegisterForm() {
   const fields = [
     {
       tag: "input",
-      attributes: { type: "email", name: "email", placeholder: "Email" },
+      attributes: {
+        type: "email",
+        name: "email",
+        placeholder: "Email",
+        required: "",
+      },
     },
     {
       tag: "input",
@@ -40,6 +71,7 @@ function renderRegisterForm() {
         type: "password",
         name: "password",
         placeholder: "Password",
+        required: "",
       },
     },
     {
@@ -48,11 +80,17 @@ function renderRegisterForm() {
         type: "password",
         name: "passwordConfirmation",
         placeholder: "Confirm Password",
+        required: "",
       },
     },
     {
       tag: "input",
-      attributes: { type: "text", name: "username", placeholder: "Username" },
+      attributes: {
+        type: "text",
+        name: "username",
+        placeholder: "Username",
+        required: "",
+      },
     },
     { tag: "input", attributes: { type: "submit", value: "Create Account" } },
   ];
@@ -155,7 +193,7 @@ async function renderHabitItems() {
   const habitFeed = document.createElement("section");
   habitFeed.id = "habits";
   const habits = await getUserHabits();
-  console.log(habits);
+
   // let id = habitData.id;
   const renderHabit = (habitData) => {
     // making the image

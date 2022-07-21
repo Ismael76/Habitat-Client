@@ -416,7 +416,6 @@ label[for="frequency"] {
   background-color: rgb(156, 239, 4) !important;
 }
 
-
 /* styling plant in the habit */
 .plant {
   overflow: hidden;
@@ -450,3 +449,12 @@ label[for="frequency"] {
   background-color: rgba(177, 167, 167, 0.438);
 }
 
+/* Error Messages For Register & Login Pages */
+
+#emailError,
+#passwordError {
+  font-family: "Short Stack", cursive !important;
+  color: red;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
