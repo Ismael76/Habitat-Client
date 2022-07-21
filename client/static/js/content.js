@@ -559,17 +559,18 @@ async function renderProfile() {
 
   topThreeHabits.textContent = "Your Top 3 Habits";
   greeting.textContent = `Hi there, ${localStorage.getItem("username")}!`;
-  profilePic.setAttribute("src", "./static/images/profileplaceholder.png");
+  profilePic.setAttribute("src", "./static/images/profileplaceholder.jpeg");
 
-  profile.className = "container bg-primary";
-  div1.className = "row bg-danger mt-4";
-  div2.className = "col-4 bg-primary p-3";
-  div3.className = "col-8 bg-danger";
+
+  profile.className ="container profcard mt-5";
+  div1.className = "row";
+  div2.className = "col-4 p-3 profpic";
+  div3.className = "col-8 holder";
   profilePic.className = "profile-pic";
   profileDiv.className = "profile-div";
   greeting.className = "mt-3 mb-2 text-center profile-name";
   topThreeHabits.className = "text-center mt-2 profile-header";
-  threeHabits.className = "bg-primary p-5";
+  threeHabits.className = "p-5 hcontent";
 
   ///////////////// Making the habit Items ////////////////////
   const habitFeed = document.createElement("section");
@@ -620,7 +621,7 @@ async function renderProfile() {
     //Bootstrap Classes Applied To The Habit Items
     habitFeed.className = "habit-card-items";
     firstMainDiv.className = "row justify-content-center";
-    secondOuterDiv.className = "col-md-8 col-lg-6 border m-3 p-2 bg-light card";
+    secondOuterDiv.className = "col-12 border m-3 p-2 bg-light card";
     anchor.className = `btn btn-light stretched-link`;
     firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
     secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
