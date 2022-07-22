@@ -1,22 +1,34 @@
-
 function renderHome() {
   const container = document.createElement("div");
   const row = document.createElement("div");
   const col1 = document.createElement("div");
   const col2 = document.createElement("div");
   const lifecycle = document.createElement("img");
+  const title = document.createElement("h1");
+  const subText = document.createElement("p");
+  const titleDiv = document.createElement("div");
 
   lifecycle.setAttribute("src", "./static/images/plantfullcycle.gif");
   lifecycle.className = "cycle";
-  container.className = "container";
+  container.className = "container centerGif";
   row.className = "row";
   col1.className = "col-10";
   col2.className = "col-2";
+
+  title.textContent = "Habitat";
+  subText.textContent =
+    "Habitat allows you to create new and beneficial habits to help you in daily life.";
+  title.className = "homeTitle hideHomeTitle";
+  subText.className = "subText hideSubText";
+  titleDiv.className = "titleContainer";
 
   col2.appendChild(lifecycle);
   row.appendChild(col1);
   row.appendChild(col2);
   container.appendChild(row);
+  main.appendChild(titleDiv);
+  titleDiv.appendChild(title);
+  titleDiv.appendChild(subText);
   main.appendChild(container);
 }
 
@@ -27,9 +39,12 @@ let passwordRegError;
 let passwordConfError;
 let usernameRegError;
 
-
 function renderLoginForm() {
   main.className = "";
+
+  if (screen.width < 768) {
+    main.className = "reset-styles";
+  }
   const fields = [
     {
       tag: "input",
@@ -82,11 +97,17 @@ function renderLoginForm() {
   });
 
   form.addEventListener("submit", requestLogin);
+  form.className = "centerForm";
   main.appendChild(form);
 }
 
 function renderRegisterForm() {
   main.className = "";
+
+  if (screen.width < 768) {
+    main.className = "reset-styles";
+  }
+
   const fields = [
     {
       tag: "input",
@@ -167,6 +188,7 @@ function renderRegisterForm() {
       form.appendChild(field);
     });
   });
+  form.className = "centerForm";
   form.addEventListener("submit", requestRegistration);
   main.appendChild(form);
 }
@@ -584,8 +606,7 @@ async function renderProfile() {
   greeting.textContent = `Hi there, ${localStorage.getItem("username")}!`;
   profilePic.setAttribute("src", "./static/images/profileplaceholder.jpeg");
 
-
-  profile.className ="container profcard mt-5";
+  profile.className = "container profcard mt-5";
   div1.className = "row";
   div2.className = "col-4 p-3 profpic";
   div3.className = "col-8 holder";

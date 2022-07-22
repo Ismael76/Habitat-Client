@@ -470,13 +470,17 @@ label[for="frequency"] {
   background-color: #ffffff;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;}
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
 .profile-pic {
   width: 100%;
 }
 
 .profile-header {
-
   color: #ffffff;
 
   /* font-family: 'Black Ops One', cursive; */
@@ -492,7 +496,6 @@ label[for="frequency"] {
 }
 
 .profile-name {
-
   color: #ffffff;
 
   /* font-family: 'Black Ops One', cursive; */
@@ -527,7 +530,8 @@ button:hover {
 .hcontent {
   /* border: solid 1px #000000; */
   background-color: #ffffff;
-  box-shadow: inset 12px 0 15px -4px rgba(31, 73, 125, 0.8), inset -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+  box-shadow: inset 12px 0 15px -4px rgba(31, 73, 125, 0.8),
+    inset -12px 0 8px -4px rgba(31, 73, 125, 0.8);
   height: 25rem;
   overflow: scroll;
 }
@@ -550,10 +554,116 @@ button:hover {
   background-color: #d34841;
   /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-
 }
 
 .cycle {
-  width: 10rem; 
+  width: 10rem;
 }
 
+/* Registration & Login Form Centering */
+
+/* @media screen and (max-width: 768px) {
+  .centerForm {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+/* height: 80%;
+    width: 80%;
+  }
+} */
+*/
+
+/* Home Page Icon & Title */
+
+.hideHomeTitle {
+  display: none;
+}
+
+.hideSubText {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .centerGif {
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .row {
+    margin-right: 15rem;
+  }
+
+  .hideHomeTitle {
+    display: block;
+  }
+
+  .hideSubText {
+    display: block;
+  }
+
+  main {
+    display: grid;
+    background-image: none;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: none !important;
+    text-align: center;
+    width: 100% !important;
+    margin: auto;
+    padding: 0;
+  }
+
+  .homeTitle {
+    color: #27974e;
+    font-weight: 800;
+    /* font-family: 'Black Ops One', cursive; */
+    /* font-family: 'Life Savers', cursive; */
+    font-family: "Nova Round", cursive;
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: 'Rubik Moonrocks', cursive; */
+    /* font-family: "Short Stack", cursive; */
+    font-size: 8rem;
+    margin: auto;
+  }
+
+  .subText {
+    font-family: "Short Stack", cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .titleContainer {
+    text-align: center;
+    padding: 1rem;
+    margin-left: 4rem;
+    margin-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homeTitle {
+    font-size: 5rem;
+  }
+  .subText {
+    font-size: 1rem;
+  }
+  .titleContainer {
+    padding: 0;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .titleContainer {
+    padding: 0;
+    margin-left: 6rem;
+    margin-right: 2rem;
+  }
+}
+
+/* @media screen {
+} */

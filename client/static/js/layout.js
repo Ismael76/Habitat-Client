@@ -59,7 +59,7 @@ function updateMain(path) {
         break;
     }
   } else {
-    renderHomepage();
+    renderHome();
   }
 }
 
