@@ -4,9 +4,6 @@ function renderHome() {
   const col1 = document.createElement("div");
   const col2 = document.createElement("div");
   const lifecycle = document.createElement("img");
-  const title = document.createElement("h1");
-  const subText = document.createElement("p");
-  const titleDiv = document.createElement("div");
 
   lifecycle.setAttribute("src", "./static/images/plantfullcycle.gif");
   lifecycle.className = "cycle";
@@ -15,20 +12,10 @@ function renderHome() {
   col1.className = "col-10";
   col2.className = "col-2";
 
-  title.textContent = "Habitat";
-  subText.textContent =
-    "Habitat allows you to create new and beneficial habits to help you in daily life.";
-  title.className = "homeTitle hideHomeTitle";
-  subText.className = "subText hideSubText";
-  titleDiv.className = "titleContainer";
-
   col2.appendChild(lifecycle);
   row.appendChild(col1);
   row.appendChild(col2);
   container.appendChild(row);
-  main.appendChild(titleDiv);
-  titleDiv.appendChild(title);
-  titleDiv.appendChild(subText);
   main.appendChild(container);
 }
 
