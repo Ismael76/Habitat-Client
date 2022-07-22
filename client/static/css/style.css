@@ -559,3 +559,29 @@ button:hover {
 .cycle {
   width: 10rem;
 }
+
+.plant-gif {
+  border-radius: 15px;
+  background-color: #f2f2f2;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 1rem;
+}
+
+.inform {
+  font-family: "Short Stack", cursive;
+  font-size: 1.3rem;
+  /* padding-left: 3.5rem; */
+  line-height: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.life {
+  width: 100%;
+}
+
+.logo-writing {
+  color: #0d7c34;
+  font-size: 5rem;
+  font-family: "Nova Round", cursive;
+}
