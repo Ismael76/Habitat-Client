@@ -1,5 +1,6 @@
 
 function renderHome() {
+  main.className = "reset-styles";
   const container = document.createElement("div");
   const row = document.createElement("div");
   const col1 = document.createElement("div");
@@ -8,10 +9,13 @@ function renderHome() {
 
   lifecycle.setAttribute("src", "./static/images/plantfullcycle.gif");
   lifecycle.className = "cycle";
-  container.className = "container";
-  row.className = "row";
-  col1.className = "col-10";
-  col2.className = "col-2";
+  container.className = "container h-100";
+  row.className = "row h-100 d-flex justify-content-center align-items-center";
+  col1.className = "col-lg-8 col-sm-12";
+  col2.className = "col-lg-4 col-sm-12 plant-gif";
+  lifecycle.className = "life";
+
+  col1.innerHTML = "<h1 class='logo-writing'>Habitat</h><p class='inform'>Habitat helps you create new and beneficial habits, to help you in daily life.</p><p class='inform'>Complete your habits daily, and grow your garden. Track your progress to see how well you are doing!</p>"
 
   col2.appendChild(lifecycle);
   row.appendChild(col1);
@@ -82,7 +86,25 @@ function renderLoginForm() {
   });
 
   form.addEventListener("submit", requestLogin);
-  main.appendChild(form);
+  
+  main.className = "reset-styles";
+  const container = document.createElement("div");
+  const row = document.createElement("div");
+  const col1 = document.createElement("div");
+  const col2 = document.createElement("div");
+
+  container.className = "container h-100 w-100";
+  row.className = "row w-100 h-100 d-flex justify-content-center align-items-center";
+  col1.className = "col-lg-8 col-sm-12";
+  col2.className = "col-lg-4 col-sm-12";
+
+  col1.innerHTML = "<h1 class='logo-writing'>Habitat</h><p class='inform'>Habitat helps you create new and beneficial habits, to help you in daily life.</p><p class='inform'>Complete your habits daily, and grow your garden. Track your progress to see how well you are doing!</p>"
+
+  col2.appendChild(form);
+  row.appendChild(col1);
+  row.appendChild(col2);
+  container.appendChild(row);
+  main.appendChild(container);
 }
 
 function renderRegisterForm() {
@@ -168,7 +190,25 @@ function renderRegisterForm() {
     });
   });
   form.addEventListener("submit", requestRegistration);
-  main.appendChild(form);
+
+  main.className = "reset-styles";
+  const container = document.createElement("div");
+  const row = document.createElement("div");
+  const col1 = document.createElement("div");
+  const col2 = document.createElement("div");
+
+  container.className = "container h-100 w-100";
+  row.className = "row w-100 h-100 d-flex justify-content-center align-items-center";
+  col1.className = "col-lg-8 col-sm-12";
+  col2.className = "col-lg-4 col-sm-12";
+
+  col1.innerHTML = "<h1 class='logo-writing'>Habitat</h><p class='inform'>Habitat helps you create new and beneficial habits, to help you in daily life.</p><p class='inform'>Complete your habits daily, and grow your garden. Track your progress to see how well you are doing!</p>"
+
+  col2.appendChild(form);
+  row.appendChild(col1);
+  row.appendChild(col2);
+  container.appendChild(row);
+  main.appendChild(container);
 }
 
 function renderHabitPage(text) {
