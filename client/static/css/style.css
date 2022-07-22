@@ -417,7 +417,6 @@ label[for="frequency"] {
   background-color: #27974e;
 }
 
-
 /* styling plant in the habit */
 .plant {
   overflow: hidden;
@@ -451,6 +450,19 @@ label[for="frequency"] {
   background-color: rgba(177, 167, 167, 0.438);
 }
 
+/* Error Messages For Register & Login Pages */
+
+#emailError,
+#passwordError,
+#emailRegError,
+#passwordRegError,
+#passwordConfError,
+#usernameRegError {
+  font-family: "Short Stack", cursive !important;
+  color: red;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
 /* ////////Editing for profile///////// */
 .profile-div {
   width: 100%;
@@ -464,10 +476,12 @@ label[for="frequency"] {
 }
 
 .profile-header {
+
   color: #ffffff;
+
   /* font-family: 'Black Ops One', cursive; */
   /* font-family: 'Life Savers', cursive; */
-  font-family: 'Nova Round', cursive;
+  font-family: "Nova Round", cursive;
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Rubik Moonrocks', cursive; */
   /* font-family: "Short Stack", cursive; */
@@ -478,7 +492,9 @@ label[for="frequency"] {
 }
 
 .profile-name {
+
   color: #ffffff;
+
   /* font-family: 'Black Ops One', cursive; */
   /* font-family: 'Life Savers', cursive; */
   /* font-family: 'Nova Round', cursive; */
@@ -486,6 +502,7 @@ label[for="frequency"] {
   /* font-family: 'Rubik Moonrocks', cursive; */
   font-family: "Short Stack", cursive;
   font-size: 1.3rem;
+
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   border-radius: 5px;
@@ -533,11 +550,13 @@ button:hover {
   background-color: #d34841;
   /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
 }
 
 .cycle {
   width: 10rem; 
 }
+
 
 .plant-gif {
   border-radius: 15px;
@@ -564,3 +583,4 @@ button:hover {
   font-size: 5rem;
   font-family: 'Nova Round', cursive;
 }
+
