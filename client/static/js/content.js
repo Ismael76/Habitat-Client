@@ -97,10 +97,10 @@ function renderLoginForm() {
   const col2 = document.createElement("div");
 
   container.className = "container h-100 w-100";
-  row.className =
-    "row w-100 h-100 d-flex justify-content-center align-items-center";
+  row.className = "row h-100 d-flex justify-content-center align-items-center";
   col1.className = "col-lg-8 col-sm-12";
-  col2.className = "col-lg-4 col-sm-12";
+  col2.className =
+    "col-lg-4 col-sm-12 d-flex justify-content-center align-items-center";
 
   col1.innerHTML =
     "<h1 class='logo-writing'>Habitat</h><p class='inform'>Habitat helps you create new and beneficial habits, to help you in daily life.</p><p class='inform'>Complete your habits daily, and grow your garden. Track your progress to see how well you are doing!</p>";
@@ -209,10 +209,10 @@ function renderRegisterForm() {
   const col2 = document.createElement("div");
 
   container.className = "container h-100 w-100";
-  row.className =
-    "row w-100 h-100 d-flex justify-content-center align-items-center";
+  row.className = "row h-100 d-flex justify-content-center align-items-center";
   col1.className = "col-lg-8 col-sm-12";
-  col2.className = "col-lg-4 col-sm-12";
+  col2.className =
+    "col-lg-4 col-sm-12 d-flex justify-content-center align-items-center";
 
   col1.innerHTML =
     "<h1 class='logo-writing'>Habitat</h><p class='inform'>Habitat helps you create new and beneficial habits, to help you in daily life.</p><p class='inform'>Complete your habits daily, and grow your garden. Track your progress to see how well you are doing!</p>";
@@ -698,14 +698,17 @@ async function renderProfile() {
     firstMainDiv.className = "row justify-content-center";
     secondOuterDiv.className = "col-12 border m-3 p-2 bg-light card";
     anchor.className = `btn btn-light stretched-link`;
-    firstDivInAnchor.className = "d-flex flex-row  justify-content-between ";
-    secondDivInAnchor.className = "d-flex flex-row  justify-content-between ";
-    titleDiv.className = "p-2 h5 font-weight-bold text-uppercase";
+    firstDivInAnchor.className =
+      "d-flex flex-row justify-content-between displayHabitItemAsRow";
+    secondDivInAnchor.className =
+      "d-flex flex-row  justify-content-between displayHabitStreakAsRow";
+    titleDiv.className =
+      "p-2 h5 font-weight-bold text-uppercase profileHabitItemTitle";
 
-    streakDiv.className = "p-2 streak mr-4";
-    plantDiv.className = "p-2 plant mr-3";
+    streakDiv.className = "p-2 streak mr-2 profileHabitItemStreak";
+    plantDiv.className = "p-2 plant mr-3 profileHabitItemPlant";
 
-    progressBarInfo.className = "p-2";
+    progressBarInfo.className = "p-2 mr-2 profileHabitItemProgress";
     progressBarInfo2.className = "p-2";
     progressContainerDiv.className = "progress";
     progressBar.className = "progress-bar bg-warning";

@@ -194,7 +194,7 @@ main {
   height: 3.5rem;
 }
 
-.wobble {
+/* .wobble {
   transform: translate(0);
   cursor: pointer;
 }
@@ -216,7 +216,7 @@ main {
   50% {
     transform: rotate(6deg);
   }
-}
+} */
 
 nav {
   display: inline-flex;
@@ -346,7 +346,12 @@ input[type="submit"]:hover {
   background-size: cover;
   background-color: #f2f2f2;
   border-radius: 5px;
+  font-family: "Short Stack", cursive !important;
   /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+}
+
+#habit-form h5 {
+  font-weight: 800;
 }
 
 label[for="frequency"] {
@@ -569,8 +574,8 @@ button:hover {
 
 .inform {
   font-family: "Short Stack", cursive;
-  font-size: 1.3rem;
-  /* padding-left: 3.5rem; */
+  font-size: 1rem;
+  /* padding-left: 1; */
   line-height: 1.5rem;
   font-weight: bold;
   color: #000000;
@@ -582,6 +587,69 @@ button:hover {
 
 .logo-writing {
   color: #0d7c34;
-  font-size: 5rem;
+  font-size: 8rem;
   font-family: "Nova Round", cursive;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 991px) {
+  .logo-writing {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+
+  .inform {
+    font-size: 0.9rem;
+  }
+}
+
+/* Modal */
+
+@media screen and (max-width: 575px) {
+  .modal-dialog {
+    margin: 0 !important;
+  }
+}
+
+/* Profile */
+@media screen and (max-width: 768px) {
+  .displayHabitItemAsRow {
+    display: grid !important;
+    grid-template-rows: minmax(50px, auto);
+    justify-content: center !important;
+    align-content: center !important;
+    margin-bottom: 0.2rem;
+    max-width: 100%;
+  }
+
+  .profileHabitItemTitle {
+    margin: 0 !important;
+    height: fit-content !important;
+    justify-self: center !important;
+    max-width: 100% !important;
+    overflow: scroll;
+    font-size: 0.9rem;
+  }
+
+  .profileHabitItemPlant {
+    justify-self: center !important;
+    margin: 0 !important;
+    width: 100px;
+  }
+
+  .displayHabitStreakAsRow {
+    display: grid !important;
+    grid-template-rows: 50px 0px 50px;
+    justify-content: center !important;
+    align-content: center !important;
+  }
+
+  .profileHabitItemStreak {
+    justify-self: center !important;
+  }
+
+  .profileHabitItemProgress {
+    justify-self: center !important;
+  }
 }
