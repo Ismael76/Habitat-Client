@@ -14,7 +14,7 @@ async function requestLogin(e) {
       body: JSON.stringify(loginData),
     };
     const r = await fetch(
-      `https://habitat-app.herokuapp.com/user/login`,
+      `https://habitat-7aey.onrender.com/user/login`,
       options
     );
     const data = await r.json();
@@ -63,7 +63,7 @@ async function requestRegistration(e) {
       body: JSON.stringify(registerData),
     };
     const r = await fetch(
-      `https://habitat-app.herokuapp.com/user/register`,
+      `https://habitat-7aey.onrender.com/user/register`,
       options
     );
     const data = await r.json();
